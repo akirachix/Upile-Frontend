@@ -27,11 +27,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
-        working-directory: ./lost-locate
+        working-directory: ./lostlocate
         run: npm install
 
       - name: Build Next.js project
-        working-directory: ./lost-locate
+        working-directory: ./lostlocate
         run: npm run build
 
   deploy:
