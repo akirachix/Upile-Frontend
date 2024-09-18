@@ -2,6 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { FaHome, FaUpload, FaUsers, FaQuestionCircle, FaUser } from 'react-icons/fa';
+import Image from 'next/image';
 
 const SidebarNav = () => {
   const router = useRouter();
@@ -18,7 +19,9 @@ const SidebarNav = () => {
 
   return (
     <div className="w-72 h-[100%] bg-[#662113] text-white p-4">
-      <img src='/media/lostlocatelogo.png' alt='LostLocate Logo' className='w-32 h-auto mx-auto sm:mx-0 mb-8' />
+      <Image src='/media/lostlocatelogo.png' alt='LostLocate Logo' className='w-32 h-auto mx-auto sm:mx-0 mb-8' 
+      width={500}
+      height={300}/>
       <nav>
         <ul className='space-y-11 text-[24px]'>
           <SidebarItem Icon={FaHome} label="Home" path="/" isActive={true} />
