@@ -8,9 +8,7 @@ export async function GET() {
         return new Response(JSON.stringify(data),{
             status:200,
         });
-    } catch (error){
-      const errors = (error as Error).message
-     
+    } catch (error){     
       
         return new Response((error as Error).message,{
             status:500
