@@ -9,7 +9,6 @@ export const fetchData = async (endpoint: string, options = {}) => {
 
     return await response.json();
   } catch (error) {
-    console.error('Error fetching data:', error);
     throw new Error('Failed to fetch data');
   }
 };

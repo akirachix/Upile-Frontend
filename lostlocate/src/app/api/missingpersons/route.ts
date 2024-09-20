@@ -10,7 +10,7 @@ export async function GET() {
         });
     } catch (error){
       const errors = (error as Error).message
-      console.log({errors});
+     
       
         return new Response((error as Error).message,{
             status:500
