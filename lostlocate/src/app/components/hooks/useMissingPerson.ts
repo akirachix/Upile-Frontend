@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchData } from '@/app/utils/fetchData';
-import { MissingPersonsData, MissingPerson} from '@/app/utils/types';
+import { MissingPerson} from '@/app/utils/types';
 
 export const useMissingPersons = () => {
   const [data, setData] = useState<MissingPerson[]>([]);
