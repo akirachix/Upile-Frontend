@@ -1,5 +1,6 @@
 "use client";
-import { useNotifications } from "../hooks/useNotification";
+import { useNotifications } from "../../../components/hooks/useNotification";
+import Layout from "../components/Layout";
 
 const imageUrl = process.env.NEXT_PUBLIC_MEDIA_URL;
 const Notification: React.FC = () => {
@@ -29,6 +30,7 @@ const Notification: React.FC = () => {
     .slice(0, 3);
 
   return (
+    <Layout>
     <div className="min-h-screen bg-white py-8">
       <div className="container mx-auto">
         <h1 className="text-[40px] font-bold text-[#662113] mb-6 text-center">
@@ -72,6 +74,8 @@ const Notification: React.FC = () => {
         </div>
       </div>
     </div>
+    </Layout>
+
   );
 };
 
