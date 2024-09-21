@@ -22,7 +22,7 @@ interface ChartData {
     labels: string[];
     datasets: {
         label: string;
-        data: any[];
+        data: number[];
         backgroundColor: string;
         borderColor: string;
         borderWidth: number;
