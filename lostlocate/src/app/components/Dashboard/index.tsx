@@ -74,9 +74,14 @@ const Dashboard: React.FC = () => {
               {filteredPersons.slice(0, 4).map((person, index) => (
                 <PersonCard
                   key={index}
+                  created_at={person.created_at}
                   first_name={person.first_name}
                   last_name={person.last_name}
                   age={person.age}
+                  image={person.image}
+                  gender={person.gender}
+                  location={person.location}
+                  clothes_worn={person.clothes_worn}
                 />
               ))}
             </div>

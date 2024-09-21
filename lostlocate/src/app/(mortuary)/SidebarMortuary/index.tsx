@@ -1,10 +1,10 @@
 'use client';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { FaHome, FaUpload, FaUsers, FaQuestionCircle, FaUser } from 'react-icons/fa';
+import { FaHome, FaUpload, FaQuestionCircle,} from 'react-icons/fa';
 import Image from 'next/image';
 
-const SidebarNav = () => {
+const Sidebar = () => {
   const router = useRouter();
 
   const SidebarItem = ({ Icon, label, path, isActive }: { Icon: React.ElementType, label: string, path: string, isActive: boolean }) => (
@@ -25,14 +25,12 @@ const SidebarNav = () => {
       <nav className='nesthub:mt-10 nesthubmax:mt-20 2xl:mt-24'>
         <ul className='space-y-11 text-[24px] nesthub:text-[18px] xl:text-[20px] 2xl:text-[24px] 2xl:mt-10'>
           <SidebarItem Icon={FaHome} label="Home" path="/" isActive={false} />
-          <SidebarItem Icon={FaUpload} label="Update Data" path="/update-data" isActive={false} />
-          <SidebarItem Icon={FaUsers} label="Missing persons" path="/missing-persons" isActive={false} />
-          <SidebarItem Icon={FaQuestionCircle} label="Unidentified bodies" path="/unidentified-bodies" isActive={false} />
-          <SidebarItem Icon={FaUser} label="Admin" path="/admin" isActive={false} />
+          <SidebarItem Icon={FaUpload} label="Update Data" path="mortuary/update-data" isActive={false} />
+          <SidebarItem Icon={FaQuestionCircle} label="Unidentified bodies" path="mortuary/unidentified-bodies" isActive={false} />
         </ul>
       </nav>
     </div>
   );
 };
 
-export default SidebarNav;
+export default Sidebar;

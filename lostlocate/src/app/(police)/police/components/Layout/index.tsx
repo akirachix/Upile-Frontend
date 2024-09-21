@@ -1,6 +1,6 @@
 "use client";  
 import React from 'react';
-import SidebarNav from '../../(police)/police/components/Layout/Sidebar';
+import SidebarNav from './Sidebar';
 
 
 
@@ -13,7 +13,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </div>
       <div className="flex-grow p-4">
         {children}
-
       </div>
     </div>
   );
