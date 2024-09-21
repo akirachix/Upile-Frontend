@@ -18,16 +18,16 @@ const SidebarNav = () => {
   );
 
   return (
-    <div className="w-72 h-[100%] bg-[#662113] text-white p-4">
-      <Image src='/media/lostlocatelogo.png' alt='LostLocate Logo' className='w-32 h-auto mx-auto sm:mx-0 mb-8' 
+    <div className=" fixed w-[350px] h-full bg-[#662113] text-white p-4 ">
+      <Image src='/media/lostlocatelogo.png' alt='LostLocate Logo' className='w-32 h-auto mx-auto mt-8 sm:mx-0 mb-8' 
       width={500}
       height={300}/>
       <nav>
         <ul className='space-y-11 text-[24px]'>
-          <SidebarItem Icon={FaHome} label="Home" path="/" isActive={true} />
+          <SidebarItem Icon={FaHome} label="Home" path="/" isActive={false} />
           <SidebarItem Icon={FaUpload} label="Update Data" path="/update-data" isActive={false} />
-          <SidebarItem Icon={FaUsers} label="Missing persons" path="/missing-persons" isActive={false} />
-          <SidebarItem Icon={FaQuestionCircle} label="Unidentified bodies" path="/unidentified-bodies" isActive={false} />
+          <SidebarItem Icon={FaUsers} label="Missing persons" path="/missing_persons" isActive={false} />
+          <SidebarItem Icon={FaQuestionCircle} label="Unidentified bodies" path="/unidentified-bodies-data" isActive={false} />
           <SidebarItem Icon={FaUser} label="Admin" path="/admin" isActive={false} />
         </ul>
       </nav>
