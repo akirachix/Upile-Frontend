@@ -24,7 +24,7 @@ const SidebarNav = () => {
       height={300}/>
       <nav className='nesthub:mt-10 nesthubmax:mt-20 2xl:mt-24'>
         <ul className='space-y-11 text-[24px] nesthub:text-[18px] xl:text-[20px] 2xl:text-[24px] 2xl:mt-10'>
-          <SidebarItem Icon={FaHome} label="Home" path="/" isActive={true} />
+          <SidebarItem Icon={FaHome} label="Home" path="/" isActive={false} />
           <SidebarItem Icon={FaUpload} label="Update Data" path="/update-data" isActive={false} />
           <SidebarItem Icon={FaUsers} label="Missing persons" path="/missing-persons" isActive={false} />
           <SidebarItem Icon={FaQuestionCircle} label="Unidentified bodies" path="/unidentified-bodies" isActive={false} />

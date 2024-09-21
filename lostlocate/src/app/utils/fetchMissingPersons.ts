@@ -10,7 +10,6 @@ export const fetchMissingPersons = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error:', error);
     throw error;
   }
 };
@@ -26,7 +25,6 @@ export const fetchSuccessfulMatches = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error:', error);
     throw error;
   }
 };

@@ -19,7 +19,7 @@ const MortuaryDashboard = () => {
 
   return (
     <div className="h-screen w-screen fixed flex flex-col bg-gray-100">
-      {/* Card section */}
+    
       <div className="flex gap-64 mt-10 ml-64
                       nesthub:mt-[8px] nesthub:ml-[35px] nesthub:gap-20 
                       nesthubmax:mt-[12px] nesthubmax:ml-28 nesthubmax:gap-28 2xl:ml-48 2xl:gap-28 2xl:h-[200px]">
@@ -35,7 +35,7 @@ const MortuaryDashboard = () => {
         </div>
       </div>
 
-      {/* Chart section */}
+  
       <div className="mt-8 w-full flex ">
         <div className="w-[80%] nesthub:w-[96%] nesthubmax:w-[95%]">
           <BarChartComponent />
