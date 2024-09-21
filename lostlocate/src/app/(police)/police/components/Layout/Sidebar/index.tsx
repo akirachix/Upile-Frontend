@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { FaHome, FaUpload, FaUsers, FaQuestionCircle, FaUser } from 'react-icons/fa';
+import { FaHome, FaUpload, FaUsers} from 'react-icons/fa';
 import Image from 'next/image';
 
 const SidebarNav = () => {
