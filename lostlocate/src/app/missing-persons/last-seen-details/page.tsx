@@ -38,7 +38,7 @@ const AddLastSeenDetailsForm = () => {
       if (success) {
         setSuccessMessage('Missing person details submitted successfully!');
         
-        router.push('/missing-persons/next-of-kin'); 
+        router.push('/missing-persons/personal-datails'); 
       }
     } catch (error: unknown) {
       console.error('Submission error:', error);
