@@ -3,10 +3,8 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import { FaHome, FaUpload, FaUsers, FaQuestionCircle, FaUser } from 'react-icons/fa';
 import Image from 'next/image';
-
 const SidebarNav = () => {
   const router = useRouter();
-
   const SidebarItem = ({ Icon, label, path, isActive }: { Icon: React.ElementType, label: string, path: string, isActive: boolean }) => (
     <li
       onClick={() => router.push(path)}
@@ -16,23 +14,21 @@ const SidebarNav = () => {
       <span className="font-medium">{label}</span>
     </li>
   );
-
   return (
-    <div className="w-72 h-[100%] bg-[#662113] text-white p-4">
-      <Image src='/media/lostlocatelogo.png' alt='LostLocate Logo' className='w-32 h-auto mx-auto sm:mx-0 mb-8' 
+    <div className="w-[350px] h-[100%] bg-[#662113] text-white p-4 ">
+      <Image src='/media/lostlocatelogo.png' alt='LostLocate Logo' className='w-32 h-auto mx-auto mt-8 sm:mx-0 mb-8'
       width={500}
       height={300}/>
       <nav>
         <ul className='space-y-11 text-[24px]'>
-          <SidebarItem Icon={FaHome} label="Home" path="/" isActive={true} />
+          <SidebarItem Icon={FaHome} label="Home" path="/" isActive={false} />
           <SidebarItem Icon={FaUpload} label="Update Data" path="/update-data" isActive={false} />
-          <SidebarItem Icon={FaUsers} label="Missing persons" path="/missing-persons" isActive={false} />
-          <SidebarItem Icon={FaQuestionCircle} label="Unidentified bodies" path="/unidentified-bodies" isActive={false} />
+          <SidebarItem Icon={FaUsers} label="Missing persons" path="/missing-persons/personal-details" isActive={true} />
+          <SidebarItem Icon={FaQuestionCircle} label="Unidentified bodies" path="/unidentified_bodies/first-page-form" isActive={false} />
           <SidebarItem Icon={FaUser} label="Admin" path="/admin" isActive={false} />
         </ul>
       </nav>
     </div>
   );
 };
-
 export default SidebarNav;
