@@ -1,6 +1,6 @@
 "use client";  
 import React from 'react';
-import SidebarNav from '../../(police)/police/components/Layout/Sidebar';
+import SidebarNav from '../(police)/police/components/Layout/Sidebar';
 
 
 

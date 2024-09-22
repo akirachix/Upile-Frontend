@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { useGetUnidentifiedBodies } from '../hooks/useGetUnidentifiedBody'; 
-import BarChartComponent from '../components/Chart/mortuary';
+import BarChartComponent from '../Chart/mortuary';
 
 const MortuaryDashboard = () => {
   const { metrics, isLoading, error } = useGetUnidentifiedBodies(); 
