@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup/dist/yup.js';
 import * as yup from 'yup';
 import { useRouter } from 'next/navigation';
 import Layout from '@/app/Layout';
-import { BodyDetailsData, FirstPageForm } from '@/app/utils/types';
+import {  FirstPageForm } from '@/app/utils/types';
 
 const schema = yup.object().shape({
   staff_id: yup.number().required('Staff ID is required'), 
