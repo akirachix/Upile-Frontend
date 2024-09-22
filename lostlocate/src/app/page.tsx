@@ -1,15 +1,13 @@
+import Layout from "./Layout";
 import React from "react";
 import Dashboard from "./Dashboard";
 
 export default function Home() {
   return (
-    <div>  
-
-
-<Dashboard/>
-
-  </div>
-  
-
+    <div> 
+      <Layout>
+        <Dashboard /> 
+      </Layout>
+    </div>
   );
 }

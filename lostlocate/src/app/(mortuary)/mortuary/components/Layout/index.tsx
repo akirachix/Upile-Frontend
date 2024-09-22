@@ -1,6 +1,6 @@
 "use client";  
 import React from 'react';
-import Sidebar from '@/app/(mortuary)/SidebarMortuary';
+import Sidebar from './SidebarMortuary';
 
 
 

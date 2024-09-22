@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup/dist/yup.js';
 import * as yup from 'yup';
 import { useRouter } from 'next/navigation';
 import Layout from '@/app/Layout';
-import { BodyDetailsData } from '@/app/utils/types';
+import {  FirstPageForm } from '@/app/utils/types';
 
 const schema = yup.object().shape({
   staff_id: yup.number().required('Staff ID is required'), 
@@ -17,13 +17,13 @@ const schema = yup.object().shape({
 });
 
 const AddNewBodyForm = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<BodyDetailsData>({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
   const router = useRouter();
 
-  const onSubmit = (data: BodyDetailsData) => {
+  const onSubmit = (data: FirstPageForm) => {
     
     localStorage.setItem('formData', JSON.stringify(data));
     
