@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup.js';
 import * as yup from 'yup';
-import { useCreateUnidentifiedBody } from '../../hooks/useCreateUnidentifiedBody';
-import Layout from '../../Layout';
+import { useCreateUnidentifiedBody } from '../../../hooks/useCreateUnidentifiedBody';
+import Layout from '../../../Layout';
 import { BodyDetailsData } from '@/app/utils/types';
 
 const schema = yup.object().shape({

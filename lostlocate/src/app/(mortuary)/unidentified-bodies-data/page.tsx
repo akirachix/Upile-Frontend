@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import Layout from '@/app/Layout';
-import {useDisplayUnidentifiedBodies} from '../hooks/useDisplayUnidentifiedBodies';
-import { UnidentifiedBodies } from '../utils/types'; 
+import {useDisplayUnidentifiedBodies} from '../../hooks/useDisplayUnidentifiedBodies';
+import { UnidentifiedBodies } from '../../utils/types'; 
 
 import { useRouter } from 'next/navigation';
 

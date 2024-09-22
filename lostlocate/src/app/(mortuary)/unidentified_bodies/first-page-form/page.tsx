@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup.js';
 import * as yup from 'yup';
 import { useRouter } from 'next/navigation';
-import Layout from '../../Layout';
+import Layout from '../../../Layout';
 import { BodyDetailsData } from '@/app/utils/types';
 
 const schema = yup.object().shape({

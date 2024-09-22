@@ -1,16 +1,15 @@
-import Layout from "./Layout";
-
+import React from "react";
+import Dashboard from "./Dashboard";
 
 export default function Home() {
   return (
-    <div>   
-<Layout>
-<div>
+    <div>  
 
-</div>
-</Layout>
+
+<Dashboard/>
+
+  </div>
   
 
-    </div>
   );
 }
