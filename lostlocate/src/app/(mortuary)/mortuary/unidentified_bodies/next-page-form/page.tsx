@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup.js';
 import * as yup from 'yup';
-import { useCreateUnidentifiedBody } from '../../../hooks/useCreateUnidentifiedBody';
-import Layout from '../../../Layout';
+import { useCreateUnidentifiedBody } from '@/app/hooks/useCreateUnidentifiedBody';
+import Layout from '@/app/Layout';
 import { BodyDetailsData } from '@/app/utils/types';
 
 const schema = yup.object().shape({
@@ -43,7 +43,7 @@ const AddNewBodyDetailsForm = () => {
         setSuccessMessage('Body details submitted successfully!'); 
 
         setTimeout(() => {
-          router.push('/unidentified-bodies-data'); 
+          router.push('mortuary/unidentified-bodies-data'); 
       }, 2000);
       }
 

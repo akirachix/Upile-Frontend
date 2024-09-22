@@ -1,5 +1,5 @@
 "use client";
-import { useNotifications } from "../../../components/hooks/useNotification";
+import { useNotifications } from "@/app/hooks/useNotification";
 import Layout from "../components/Layout";
 
 const imageUrl = process.env.NEXT_PUBLIC_MEDIA_URL;

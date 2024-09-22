@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup.js';
 import * as yup from 'yup';
 import { useRouter } from 'next/navigation';
-import Layout from '../../../Layout';
+import Layout from '@/app/Layout';
 import { BodyDetailsData } from '@/app/utils/types';
 
 const schema = yup.object().shape({
@@ -27,7 +27,7 @@ const AddNewBodyForm = () => {
     
     localStorage.setItem('formData', JSON.stringify(data));
     
-    router.push('/unidentified_bodies/next-page-form'); 
+    router.push('unidentified_bodies/next-page-form'); 
   };
 
   const today = new Date().toISOString().split('T')[0]; 
