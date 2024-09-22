@@ -40,25 +40,52 @@ export interface MissingPerson {
     matches:Matches[];
   }
 
-export interface BodyDetailsData {
-    staff_id:number;
-    name: string;
-    gender: string;
-    location: string;
-    reporting_date: string; 
-    hair_color: string;
-    skin_color: string;
-    height: number; 
-    weight: number; 
-    body_marks: string;
-    clothes_worn: string;
+  export interface FirstPageForm{
+    staff_id: number,
+    name: string,
+    gender: string,
+    location: string,
+    reporting_date: Date,
+
+  }
+
+  export interface NextPageForm{
+  hair_color: string,
+  skin_color:string,
+  height: number,
+  weight: number,
+  body_marks?: string,
+  clothes_worn?: string,
+
+  }
+
+export interface BodyDetailsData{
+    firstpageform?: FirstPageForm[],
+    nextpageform?: NextPageForm[],
+   
 }
+
+
+
+// export interface BodyDetailsData {
+//     staff_id:number;
+//     name: string;
+//     gender: string;
+//     location: string;
+//     reporting_date: string; 
+//     hair_color: string;
+//     skin_color: string;
+//     height: number; 
+//     weight: number; 
+//     body_marks: string;
+//     clothes_worn: string;
+// }
 
 export interface UnidentifiedBodies{
     id:number;
     name:string;
     gender:string;
-    reporting_date:string;
+    reporting_date:Date;
     clothes_worn: string;
 }
 
@@ -72,24 +99,13 @@ export interface PhysicalDescription {
     eye_color: string;
     skin_color: string;
 }
-export interface nextofkin {
-   next_of_kin_id: number
-   missing_person_id: number,
-   first_name: string,
-   last_name : string,
-   address: string,
-   relationship: string,
-   contact: number, 
-   alternative_contact: string
-}
-
 
 export interface MissingPersonData{
     physicaldescription: PhysicalDescription[],
     lastseendetails: LastSeenDetails[],
     persondetails: PersonDetails[],
-    nextofkin:nextofkin[],
 }
+
 export interface UnidentifiedBodiesData{
     unidentified_bodies: UnidentifiedBodies[];
     total_unidentified_bodies: number

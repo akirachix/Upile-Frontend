@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup/dist/yup.js';
 import * as yup from 'yup';
 import { useCreateUnidentifiedBody } from '@/app/hooks/useCreateUnidentifiedBody';
 import Layout from '@/app/Layout';
-import { BodyDetailsData } from '@/app/utils/types';
+import { BodyDetailsData, NextPageForm } from '@/app/utils/types';
 
 const schema = yup.object().shape({
   hair_color: yup.string().required('Hair Color is required'),
@@ -19,7 +19,7 @@ const schema = yup.object().shape({
 });
 
 const AddNewBodyDetailsForm = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<BodyDetailsData>({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
   
@@ -30,7 +30,7 @@ const AddNewBodyDetailsForm = () => {
   const { submitUnidentifiedBody, isSubmitting } = useCreateUnidentifiedBody();
 
   
-  const onSubmit = async (data: BodyDetailsData) => {
+  const onSubmit = async (data: NextPageForm) => {
     setSubmitError(null); 
     setSuccessMessage(null); 
 

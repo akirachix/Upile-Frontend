@@ -7,3 +7,4 @@ export interface MissingPersonsData{
     missing_person: MissingPersons[];
     total_missing_persons: number
   }
+
