@@ -1,4 +1,6 @@
 import Layout from "./Layout";
+import React from "react";
+import Dashboard from "./Dashboard";
 
 
 export default function Home() {
@@ -7,8 +9,10 @@ export default function Home() {
       <Layout>
         
       </Layout>
+      <Dashboard/>
+
        <main>            
         </main>
     </div>
-  );
-}
+
+  )}
