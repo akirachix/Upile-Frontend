@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useCreateMissingPerson } from '@/app/hooks/useCreateMissingPerson';
 import Layout from '../../Layout';
-import { LastSeenDetails, nextofkin } from '@/app/utils/types';
+import { LastSeenDetails } from '@/app/utils/types';
 import ProgressBar from '@/app/components/Progressive bar';
 
 const schema = yup.object().shape({
@@ -37,9 +37,7 @@ const AddLastSeenDetailsForm = () => {
       const success = await submitMissingPerson(combinedData);
       if (success) {
         setSuccessMessage('Missing person details submitted successfully!');
-        
-        router.push('/missing-persons/personal-datails'); 
-      }
+              }
     } catch (error: unknown) {
       console.error('Submission error:', error);
       if (error instanceof Error) {
@@ -84,7 +82,7 @@ const AddLastSeenDetailsForm = () => {
           {submitError && <p className="text-red-600">{submitError}</p>}
           {successMessage && <p className="text-green-600">{successMessage}</p>}
           <div className="flex justify-between">
-            <button type="button" onClick={() => router.push('/missing-persons/physicaldescription')} className="bg-[#D4B337] text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-yellow-600">Previous</button>
+            <button type="button" onClick={() => router.push('/missing-persons/physical-description')} className="bg-[#D4B337] text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-yellow-600">Previous</button>
             
             <button
               type="submit"
