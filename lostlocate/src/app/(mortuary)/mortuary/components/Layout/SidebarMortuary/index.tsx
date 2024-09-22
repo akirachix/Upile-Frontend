@@ -26,7 +26,6 @@ const Sidebar = () => {
         <ul className='space-y-11 text-[24px] nesthub:text-[18px] xl:text-[20px] 2xl:text-[24px] 2xl:mt-10'>
           <SidebarItem Icon={FaHome} label="Home" path="/" isActive={false} />
           <SidebarItem Icon={FaUpload} label="Update Data" path="mortuary/update-data" isActive={false} />
-          <SidebarItem Icon={FaUpload} label="Update Data" path="missing-person/personal-details" isActive={true} />
           <SidebarItem Icon={FaQuestionCircle} label="Unidentified bodies" path="mortuary/unidentified-bodies" isActive={false} />
         </ul>
       </nav>
