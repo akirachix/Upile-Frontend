@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import Layout from "./components/Layout";
 import PoliceDashboard from "@/app/PoliceDashboard";
 
 export default function Police() {

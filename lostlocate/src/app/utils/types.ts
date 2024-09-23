@@ -65,22 +65,6 @@ export interface BodyDetailsData{
    
 }
 
-
-
-// export interface BodyDetailsData {
-//     staff_id:number;
-//     name: string;
-//     gender: string;
-//     location: string;
-//     reporting_date: string; 
-//     hair_color: string;
-//     skin_color: string;
-//     height: number; 
-//     weight: number; 
-//     body_marks: string;
-//     clothes_worn: string;
-// }
-
 export interface UnidentifiedBodies{
     id:number;
     name:string;
@@ -88,7 +72,6 @@ export interface UnidentifiedBodies{
     reporting_date:Date;
     clothes_worn: string;
 }
-
 
 
 export interface PhysicalDescription {

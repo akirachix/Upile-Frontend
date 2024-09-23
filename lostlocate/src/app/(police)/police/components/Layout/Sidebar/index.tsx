@@ -18,7 +18,7 @@ const SidebarNav = () => {
   );
 
   return (
-    <div className=" w-[350px] h-[100%] bg-[#662113] text-white p-4 nexthub:w-[30px] nexthub:h-[30px] xl:w-68 xl:h-[800px] 2xl:h-[964px] 2xl:w-72px">
+    <div className="fixed w-[350px] h-[100%] bg-[#662113] text-white p-4 nexthub:w-[30px] nexthub:h-[30px] xl:w-68 xl:h-[800px] 2xl:h-[964px] 2xl:w-72px  ">
       <Image src='/media/lostlocatelogo.png' alt='LostLocate Logo' className='w-32 h-auto mx-auto sm:mx-0 mb-8 nesthub:mt-4 nesthubmax:mt-4 2xl:mt-6' 
       width={500}
       height={300}/>
