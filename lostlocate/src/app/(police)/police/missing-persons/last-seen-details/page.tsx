@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useCreateMissingPerson } from '@/app/hooks/useCreateMissingPerson';
-import Layout from '../../../../Layout';
+import Layout from '../../components/Layout';
 import { LastSeenDetails } from '@/app/utils/types';
 import ProgressBar from '@/app/components/Progressive bar';
 
