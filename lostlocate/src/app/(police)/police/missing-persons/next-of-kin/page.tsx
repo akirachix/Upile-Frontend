@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNextOfKin } from '@/app/hooks/useNextOfKin';
-import Layout from '../../../../Layout';
+import Layout from '../../components/Layout';
 import ProgressBar from '@/app/components/Progressive bar';
 import { NextOfKin } from '@/app/utils/type';
 
