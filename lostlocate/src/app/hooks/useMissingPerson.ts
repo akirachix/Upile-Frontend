@@ -11,7 +11,6 @@ export const useMissingPersons = () => {
     const fetchMissingPersons = async () => {
       try {
         const result = await fetchData('/api/missingpersons');
-
         
         setData(result?.missing_persons);
       } catch (err: unknown) {
