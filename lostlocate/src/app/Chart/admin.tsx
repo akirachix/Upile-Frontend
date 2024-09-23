@@ -44,7 +44,7 @@ const AdminChart = () => {
     ],
   });
   const [isLoading, setIsLoading] = useState(true);
-  const [hasData, setHasData] = useState(false);
+  const [,setHasData] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
