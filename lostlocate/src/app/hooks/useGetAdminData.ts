@@ -3,7 +3,6 @@ import { fetchTotalStations } from '../utils/fecthAdminData';
 import { fetchSuccessfulMatches } from '../utils/fecthAdminData';
 import { fetchTotalMortuaries } from '../utils/fecthAdminData';
 
-
 export const useGetAdminData = () => {
   const [metrics, setMetrics] = useState({
     TotalPoliceStations: 0,

@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    const res = await fetch(`${process.env.API_URL}/api/mortuaries`);
+    const res = await fetch(`${process.env.BASE_URL}/api/mortuaries`);
 
     if (!res.ok) {
       throw new Error('Failed to fetch missing persons data');

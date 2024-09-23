@@ -1,6 +1,6 @@
-const stations = 'api/stations';
-const mortuaries = 'api/mortuaries';
-const match = 'api/matches';
+const stations = '/api/stations';
+const mortuaries = '/api/mortuaries';
+const match = '/api/matches';
 
 export const fetchTotalStations = async () => {
     try {
