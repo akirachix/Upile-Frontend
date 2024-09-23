@@ -1,12 +1,18 @@
 import React from "react";
-import NextOfKinForm from "./(police)/police/missing-persons/next-of-kin/page";
+
+import Dashboard from "./Dashboard";
+import Login from "./components/Login/page";
+import RegisterForm from "./components/Register/page";
+
 
 export default function Home() {
   return (
-    <div> 
-     
-        <NextOfKinForm/>
-     
-    </div>
+    <div>   
+
+{/* <Dashboard/> */}
+{/* <Login/> */}
+<RegisterForm/>
+  </div>
+
   );
 }
