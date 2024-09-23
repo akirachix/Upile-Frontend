@@ -13,7 +13,7 @@ const MortuaryDashboard = () => {
   if (error) {
     return <p>Error: {error.message}</p>;
   }
-
+  
   const unidentifiedBodies = metrics?.unidentifiedBodies ?? 0;
   const successfulMatches = metrics?.successfulMatches ?? 0;
 

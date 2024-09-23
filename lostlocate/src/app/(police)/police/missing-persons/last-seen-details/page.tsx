@@ -52,7 +52,7 @@ const AddLastSeenDetailsForm = () => {
     <Layout>
       <ProgressBar currentPage={3} />
       <div className="flex justify-center items-center bg-gray-100 p-4">
-        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-16 rounded-lg shadow-md w-[990px] h-[550px] border-2 border-red-800">
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-16 rounded-lg shadow-md w-[990px] h-[550px] border-2 border-red-800 ml-[350px]">
           <h2 className="text-4xl text-center font-bold mb-10 text-[#662113]">Last Seen Details</h2>
           <div className="mb-10 flex items-center">
             <label htmlFor="missing_date" className="w-40 text-[20px] font-extrabold text-black-700">Missing Date:</label>
@@ -82,12 +82,14 @@ const AddLastSeenDetailsForm = () => {
           {submitError && <p className="text-red-600">{submitError}</p>}
           {successMessage && <p className="text-green-600">{successMessage}</p>}
           <div className="flex justify-between">
-            <button type="button" onClick={() => router.push('/missing-persons/physical-description')} className="bg-[#D4B337] text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-yellow-600">Previous</button>
+            <button type="button" onClick={() => router.push('/missing-persons/physical-description')} 
+            className="bg-[#D4B337] text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-yellow-600">Previous</button>
             
             <button
               type="submit"
               className="bg-[#662113] text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-red-900"
               disabled={isSubmitting}
+              onClick={() => router.push('/police/missing-persons/next-of-kin')}
             >
               {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>

@@ -1,4 +1,5 @@
 'use client';
+
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { FaHome, FaUpload, FaQuestionCircle,} from 'react-icons/fa';
@@ -31,6 +32,7 @@ const Sidebar = () => {
       </nav>
     </div>
   );
+  
 };
 
 export default Sidebar;
