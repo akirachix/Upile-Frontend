@@ -125,11 +125,21 @@ const ChartComponent = () => {
   const options: ChartOptions<'line'> = {
     plugins: {
       legend: { display: true, position: 'top' },
-      title: { display: true, text: 'Missing Persons Over Time' },
+      title: { display: true, text: 'Missing Persons Over Time',
+      font: {
+        size: 24, 
+      },
+      color: '#662113',  },
     },
     scales: {
-      x: { title: { display: true, text: 'Months of the Year' } },
-      y: { title: { display: true, text: 'Number of Missing Persons' }, beginAtZero: true },
+      x: { title: { display: true, text: 'Months of the Year',
+      font: {
+        size: 20, 
+      } } },
+      y: { title: { display: true, text: 'Number of Missing Persons',
+      font: {
+        size: 20, 
+      }, }, beginAtZero: true },
     },
   };
 
