@@ -140,8 +140,10 @@ const NextOfKinForm = () => {
             
             <button
                 type="submit"
+                onClick={() => router.push('/police')}
                 className="bg-[#D4B337] mt-2 mr-12 text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-yellow-600"
                 disabled={isSubmitting}
+                
             >
 
                 {isSubmitting ? 'Submitting...' : 'Submit'}
