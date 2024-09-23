@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useLogin from '@/app/hooks/useLogin';
+import Image from 'next/image';
 
 const Login: React.FC = () => {
   const [generated_code, setCode] = useState<string>('');
@@ -33,7 +34,7 @@ const Login: React.FC = () => {
   return (
     <div className="flex flex-row h-screen bg-gray-200">
       <div className="flex-1 flex justify-center items-center bg-white">
-        <img src="./media/lostlocate.png" alt="Lost Locate Logo" className="w-full max-w-2xl h-auto" />
+        <Image src="./media/lostlocate.png" alt="Lost Locate Logo" className="w-full max-w-2xl h-auto" />
       </div>
       <div className="flex-1 flex flex-col justify-center p-10 bg-yellow-100">
         <h2 className="text-6xl text-red-800 mb-8 text-center">LOGIN</h2>

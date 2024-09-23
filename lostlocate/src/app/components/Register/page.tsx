@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useRouter } from 'next/navigation';
 import { userRegister } from '@/app/utils/userRegister';
+import Image from 'next/image';
 interface FormData {
   first_name: string;
   last_name: string;
@@ -68,7 +69,7 @@ const RegisterForm = () => {
     <div className="flex flex-col md:flex-row h-screen bg-white">
       <div className="w-full md:w-1/2 flex items-center justify-center p-8">
 
-        <img src='/media/lostlocate.png' alt="Logo" width={530} height={249} />
+        <Image src='/media/lostlocate.png' alt="Logo" width={530} height={249} />
 
       </div>
       <div className="w-full md:w-1/2 bg-[rgba(212,179,55,0.4)] flex items-start justify-center p-8">
