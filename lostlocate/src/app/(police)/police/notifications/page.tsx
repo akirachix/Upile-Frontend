@@ -47,7 +47,7 @@ const Notification: React.FC = () => {
                 }`}
               >
                 <div className="mr-4">
-                  <Image
+                  <img
                     src={`${imageUrl}${notification.missing_person.image}`}
                     alt="image"
                     width={100}

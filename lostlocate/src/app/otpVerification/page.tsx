@@ -1,11 +1,14 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 const OTPVerification: React.FC = () => {
   const [otp, setOtp] = useState(Array(6).fill(""));
   const [timeLeft, setTimeLeft] = useState(30);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState(''); 
+  const router = useRouter();
 
   const handleChange = (element: HTMLInputElement, index: number) => {
     if (isNaN(Number(element.value))) return;
@@ -28,10 +31,18 @@ const OTPVerification: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     setError('');
+    setSuccessMessage('');
 
     setTimeout(() => {
-      if (otp.join('').length === 6) {
-        alert('OTP verified successfully');
+      const enteredOtp = otp.join('');
+      if (enteredOtp.length === 6) {
+        setSuccessMessage('OTP verified successfully!'); 
+        
+        if (enteredOtp.startsWith('Po')) {
+          setTimeout(() => router.push('/police'), 2000); 
+        } else {
+          setTimeout(() => router.push('/mortuary'), 2000); 
+        }
       } else {
         setError('Invalid OTP');
       }
@@ -60,6 +71,7 @@ const OTPVerification: React.FC = () => {
         </div>
         <p className="text-2xl mb-10 text-gray-600">Code expires in {timeLeft} seconds</p>
         {error && <p className="text-red-500 mb-4">{error}</p>}
+        {successMessage && <p className="text-green-500 mb-4">{successMessage}</p>}
         <button
           type="submit"
           className="bg-[#722F37] text-white py-5 px-12 text-2xl rounded-md hover:bg-[#5A1E24] transition duration-300"
