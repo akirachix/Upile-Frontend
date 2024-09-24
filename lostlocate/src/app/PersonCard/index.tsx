@@ -1,6 +1,5 @@
 import React from 'react';
 import { MissingPerson } from '@/app/utils/types';
-import Image from 'next/image';
 
 const imageUrl = process.env.NEXT_PUBLIC_MEDIA_URL;
 const PersonCard: React.FC<MissingPerson> = ({ first_name, last_name, age,gender,location,image,clothes_worn }) => (

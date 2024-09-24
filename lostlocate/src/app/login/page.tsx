@@ -26,9 +26,7 @@ const Login: React.FC = () => {
       if (response) {
         setCookie('generated_code', response.generated_code, { maxAge: 60 * 60 * 24 });
         setCookie('phone_number', response.phone_number, { maxAge: 60 * 60 * 24 });
-      
-        const generated_code = response.generated_code;
-      
+            
         setTimeout(() => {
           router.push('/otpVerification');
         }, 2000);

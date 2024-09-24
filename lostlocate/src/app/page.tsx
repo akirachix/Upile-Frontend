@@ -23,7 +23,8 @@ export default function Home() {
   return (
     <div>   
 
-<Dashboard/>
+  {dashboard} <Dashboard/>
+
   </div>
 
   )
