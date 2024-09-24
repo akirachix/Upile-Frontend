@@ -19,15 +19,15 @@ const Sidebar = () => {
   );
 
   return (
-    <div className="w-80 h-[100%] bg-[#662113] text-white p-4 nexthub:w-[30px] nexthub:h-[30px] xl:w-68 xl:h-[800px] 2xl:h-[964px] 2xl:w-72px">
+    <div className="w-80 h-[100%] bg-[#662113] text-white p-4 nexthub:w-[30px] nexthub:h-[30px] xl:w-68 xl:h-[800px] 2xl:h-[1035px] 2xl:w-72px">
       <Image src='/media/lostlocatelogo.png' alt='LostLocate Logo' className='w-32 h-auto mx-auto sm:mx-0 mb-8 nesthub:mt-4 nesthubmax:mt-4 2xl:mt-6' 
       width={500}
       height={300}/>
       <nav className='nesthub:mt-10 nesthubmax:mt-20 2xl:mt-24'>
         <ul className='space-y-11 text-[24px] nesthub:text-[18px] xl:text-[20px] 2xl:text-[24px] 2xl:mt-10'>
-          <SidebarItem Icon={FaHome} label="Home" path="/" isActive={false} />
-          <SidebarItem Icon={FaUpload} label="Update Data" path="mortuary/update-data" isActive={false} />
-          <SidebarItem Icon={FaQuestionCircle} label="Unidentified bodies" path="mortuary/unidentified-bodies" isActive={false} />
+          <SidebarItem Icon={FaHome} label="Home" path="/mortuary" isActive={false} />
+          <SidebarItem Icon={FaUpload} label="Update Data" path="mortuary/unidentified_bodies/first-page-form" isActive={false} />
+          <SidebarItem Icon={FaQuestionCircle} label="Unidentified bodies" path="mortuary/unidentified-bodies-data" isActive={false} />
         </ul>
       </nav>
     </div>

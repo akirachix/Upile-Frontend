@@ -21,7 +21,7 @@ const PoliceDashboard = () => {
 
   return (
     <div className="mt-12 ml-[350px]">
-      <div className="flex flex-wrap gap-16 mt-10 nesthub:mt-[8px] nesthub:ml-[18px] nesthubmax:mt-[12px] nesthub:gap-[24px] nesthubmax:ml-8 nesthubmax:gap-20 2xl:ml-14">
+      <div className="flex gap-16 mt-10 nesthub:mt-[8px] nesthub:ml-[18px] nesthubmax:mt-[12px] nesthub:gap-[24px] nesthubmax:ml-8 nesthubmax:gap-20 2xl:ml-14">
         <div className="bg-[#D4B337] text-white text-center text-[24px] font-bold p-6 rounded-lg shadow-md w-[400px] h-[200px]
           nesthub:w-[190px] nesthub:h-[100px] nesthub:text-[16px]
           nesthubmax:w-[230px] nesthubmax:h-[130px] nesthubmax:text-[20px] 2xl:w-[400px] 2xl:h-[200px] 2xl:text-[28px]">

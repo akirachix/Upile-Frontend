@@ -35,7 +35,8 @@ const Login: React.FC = () => {
       }
         if (generated_code.startsWith('Po')) {
           router.push('/police'); 
-        } else {
+        }
+         else {
           router.push('/mortuary'); 
         };
       

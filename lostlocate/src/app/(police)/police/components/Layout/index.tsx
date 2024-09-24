@@ -7,7 +7,7 @@ import SidebarNav from './Sidebar';
 export default function Layout({ children }: { children: React.ReactNode }) {
  
   return (
-    <div className="ml-[350px] flex min-h-screen">
+    <div className=" flex min-h-screen">
       <div>
         <SidebarNav />
       </div>

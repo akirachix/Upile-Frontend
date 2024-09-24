@@ -3,8 +3,7 @@ const baseURL = process.env.BASE_URL;
 
 
 export async function POST(request: Request) {
-    const requestData = await request.json(); 
-    console.log('Received data:', requestData); 
+    const requestData = await request.json();  
     try {
     
 
@@ -24,8 +23,7 @@ export async function POST(request: Request) {
         });
     } 
     catch (error) {
-        const errors = (error as Error).message;
-        console.error({ errors }); 
+        const errors = (error as Error).message; 
         return new Response(errors, {
             status: 500,
            

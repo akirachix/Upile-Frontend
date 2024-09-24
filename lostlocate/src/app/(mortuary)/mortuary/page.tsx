@@ -1,7 +1,7 @@
-import Layout from "@/app/Layout";
 import MortuaryDashboard from "@/app/MortuaryDashboard";
+import Layout from "./components/Layout";
 
-export default function Mortuaries() {
+export default function Police() {
   return (
     
 <Layout>

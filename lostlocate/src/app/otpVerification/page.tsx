@@ -38,11 +38,7 @@ const OTPVerification: React.FC = () => {
       if (enteredOtp.length === 6) {
         setSuccessMessage('OTP verified successfully!'); 
         
-        if (enteredOtp.startsWith('Po')) {
-          setTimeout(() => router.push('/police'), 2000); 
-        } else {
-          setTimeout(() => router.push('/mortuary'), 2000); 
-        }
+          setTimeout(() => router.push('/police'), 500); 
       } else {
         setError('Invalid OTP');
       }

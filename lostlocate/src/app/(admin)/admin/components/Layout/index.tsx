@@ -1,18 +1,20 @@
-
 "use client";  
-
 import React from 'react';
-import SidebarNav from '../(police)/police/components/Layout/Sidebar';
+import SidebarAdmin from './SidebarAdmin';
+
+
+
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+ 
   return (
     <div className="flex min-h-screen">
       <div>
-        <SidebarNav />
+        <SidebarAdmin/>
       </div>
       <div className="flex-grow p-4">
-        {children} 
-      
+        {children}
+
       </div>
       
     </div>

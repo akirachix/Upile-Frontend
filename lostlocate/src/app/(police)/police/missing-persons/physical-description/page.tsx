@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup.js';
 import * as yup from 'yup';
 import { useRouter } from 'next/navigation';
-import Layout from '@/app/Layout';
+import Layout from '../../components/Layout';
 import { PhysicalDescription } from '@/app/utils/types';
 import ProgressBar from '@/app/components/Progressive bar';
 
@@ -25,14 +25,14 @@ const AddNewBodyForm = () => {
 
   const onSubmit = (data: PhysicalDescription) => {
     localStorage.setItem('physical-description', JSON.stringify(data));
-    router.push('/missing-persons/last-seen-details');
+    router.push('/police/missing-persons/last-seen-details');
   };
   return (
     <Layout>
       <ProgressBar currentPage={2}/>
 
       <div className="flex justify-center items-center bg-gray-100 p-4">
-        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-16 rounded-lg shadow-md w-[950px] h-[870px] border-2 border-red-800  ml-[350px]">
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-16 rounded-lg shadow-md w-[950px] h-[970px] border-2 border-red-800  ml-[350px]">
           <h2 className="text-4xl text-center font-bold mb-8 text-[#662113]">Physical Details</h2>
           <div className="mb-10 flex items-center">
             <label htmlFor="height" className="w-40 text-[24px] font-semibold text-black-700">Height:</label>

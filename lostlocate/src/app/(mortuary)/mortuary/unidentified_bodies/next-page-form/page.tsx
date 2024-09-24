@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup.js';
 import * as yup from 'yup';
 import { useCreateUnidentifiedBody } from '@/app/hooks/useCreateUnidentifiedBody';
-import Layout from '@/app/Layout';
+import Layout from '../../components/Layout';
 import { NextPageForm } from '@/app/utils/types';
 
 const schema = yup.object().shape({

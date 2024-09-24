@@ -120,6 +120,10 @@ const BarChartComponent = () => {
       title: {
         display: true,
         text: 'Unidentified Bodies Per Month',
+        font: {
+          size: 24, 
+        },
+        color: '#662113', 
       },
     },
     scales: {
@@ -127,12 +131,18 @@ const BarChartComponent = () => {
         title: {
           display: true,
           text: 'Months of the Year',
+          font: {
+            size: 20, 
+          },
         },
       },
       y: {
         title: {
           display: true,
           text: 'No. of Unidentified Bodies',
+          font: {
+            size: 20, 
+          },
         },
         beginAtZero: true,
       },

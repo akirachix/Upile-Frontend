@@ -32,7 +32,7 @@ const Notification: React.FC = () => {
 
   return (
     <Layout>
-    <div className="ml-[350px] min-h-screen bg-white py-8">
+    <div className="ml-[100px] min-h-screen bg-white py-8">
       <div className="container mx-auto">
         <h1 className="text-[40px] font-bold text-[#662113] mb-6 text-center">
           Notifications

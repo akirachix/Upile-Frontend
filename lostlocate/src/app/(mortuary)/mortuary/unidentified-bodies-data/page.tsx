@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import Layout from '@/app/Layout';
+import Layout from '../components/Layout';
 import { useDisplayUnidentifiedBodies } from '../../../hooks/useDisplayUnidentifiedBodies';
 import { UnidentifiedBodies } from '../../../utils/types'; 
 import { useRouter } from 'next/navigation';
@@ -50,7 +50,7 @@ const UnidentifiedBodiesDashboard: React.FC = () => {
 
   return (
     <Layout>
-      <div className="bg-white min-h-screen ml-[350px]">
+      <div className="fixed bg-white min-h-screen ml-[60px]">
         <header className="text-[#662113] p-4">
           <div className="container mx-auto">
             <h1 className="text-[40px] font-bold">Unidentified Bodies</h1>
