@@ -52,7 +52,7 @@ const NextOfKinForm = () => {
     <Layout>
       <ProgressBar currentPage={3} />
       <div className="flex justify-center items-center bg-gray-100 p-4">
-        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-16 ml-[350px] rounded-lg shadow-md w-[970px] h-[900px] border-2 border-red-800">
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-16 ml-[350px] rounded-lg shadow-md w-[970px] h-[985px] border-2 border-red-800">
           <h2 className="text-4xl text-center font-bold mb-10 text-[#662113]">Next of Kin Details</h2>
 
           <div className="mb-10 flex items-center">
@@ -141,7 +141,7 @@ const NextOfKinForm = () => {
             <button
                 type="submit"
                 onClick={() => router.push('/police')}
-                className="bg-[#D4B337] mt-2 mr-12 text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-yellow-600"
+                className="bg-[#D4B337] mt-2 mr-1 text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-yellow-600"
                 disabled={isSubmitting}
                 
             >

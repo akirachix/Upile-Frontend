@@ -25,15 +25,15 @@ const AddNewBodyForm = () => {
   const router = useRouter();
   const onSubmit = (data: PersonDetails) => {
     localStorage.setItem('formData', JSON.stringify(data));
-    router.push('/missing-persons/physical-description');
+    router.push('/police/missing-persons/physical-description');
 
   };
   return (
     <Layout>
       <ProgressBar currentPage={1}/>
-      <div className="flex justify-center items-center mt-2 bg-gray-100 p-4">
-        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-16 rounded-lg shadow-md w-[950px] h-[890px] border-2 border-red-800 ml-[350px]">
-          <h2 className="text-4xl text-center font-bold mb-12 text-[#662113]">Personal Details</h2>
+      <div className="flex justify-center items-center bg-gray-100 p-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-16 rounded-lg shadow-md w-[950px] h-[935px] border-2 border-red-800 ml-[350px]">
+          <h2 className="text-4xl text-center font-bold mb-8 text-[#662113]">Personal Details</h2>
           <div className="mb-10 flex items-center">
             <label htmlFor="officer_id" className="w-40 text-[24px] font-semibold text-black-700">Officer ID:</label>
             <input
@@ -79,7 +79,7 @@ const AddNewBodyForm = () => {
               <option value="male">Male</option>
             </select>
           </div>
-          <div className="mb-10 flex items-center">
+          <div className="mb-4 flex items-center">
             <label htmlFor="contact" className="w-40 text-[24px] font-semibold text-black-700">Contact:</label>
             <input
               {...register('contact')}

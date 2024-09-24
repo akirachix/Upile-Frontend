@@ -1,7 +1,6 @@
 "use client";
 import { useNotifications } from "@/app/hooks/useNotification";
 import Layout from "../components/Layout";
-import Image from "next/image";
 
 const imageUrl = process.env.NEXT_PUBLIC_MEDIA_URL;
 const Notification: React.FC = () => {
@@ -32,7 +31,7 @@ const Notification: React.FC = () => {
 
   return (
     <Layout>
-    <div className="ml-[350px] min-h-screen bg-white py-8">
+    <div className="ml-[100px] min-h-screen bg-white py-8">
       <div className="container mx-auto">
         <h1 className="text-[40px] font-bold text-[#662113] mb-6 text-center">
           Notifications
@@ -47,7 +46,7 @@ const Notification: React.FC = () => {
                 }`}
               >
                 <div className="mr-4">
-                  <Image
+                  <img
                     src={`${imageUrl}${notification.missing_person.image}`}
                     alt="image"
                     width={100}

@@ -1,5 +1,5 @@
 import MortuaryDashboard from "@/app/MortuaryDashboard";
-import Layout from "./components/Layout"
+import Layout from "./components/Layout";
 
 export default function Police() {
   return (

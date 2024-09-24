@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useLogin from '@/app/hooks/useLogin';
 import Image from 'next/image';
+import {setCookie} from 'cookies-next';
+
 
 const Login: React.FC = () => {
   const [generated_code, setCode] = useState<string>('');
@@ -20,12 +22,24 @@ const Login: React.FC = () => {
 
       console.log("API Response:", response);
 
+
       if (response) {
-        setTimeout(()=>{
-          router.push('/components/OTPVerification');
-        },2000);
-        
+        setCookie('generated_code', response.generated_code, { maxAge: 60 * 60 * 24 });
+        setCookie('phone_number', response.phone_number, { maxAge: 60 * 60 * 24 });
+            
+        setTimeout(() => {
+          router.push('/otpVerification');
+        }, 2000);
       }
+        if (generated_code.startsWith('Po')) {
+          router.push('/police'); 
+        }
+         else {
+          router.push('/mortuary'); 
+        };
+      
+      
+      
     } catch (error) {
       console.error("Error during login:", error);
     }
@@ -34,7 +48,9 @@ const Login: React.FC = () => {
   return (
     <div className="flex flex-row h-screen bg-gray-200">
       <div className="flex-1 flex justify-center items-center bg-white">
-        <Image src="./media/lostlocate.png" alt="Lost Locate Logo" className="w-full max-w-2xl h-auto" />
+        <Image src="/media/lostlocate.png" alt="Lost Locate Logo" className="w-full max-w-2xl h-auto" 
+        width={500}
+        height={300}/>
       </div>
       <div className="flex-1 flex flex-col justify-center p-10 bg-yellow-100">
         <h2 className="text-6xl text-red-800 mb-8 text-center">LOGIN</h2>

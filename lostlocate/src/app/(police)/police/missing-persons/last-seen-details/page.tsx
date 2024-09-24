@@ -52,7 +52,7 @@ const AddLastSeenDetailsForm = () => {
     <Layout>
       <ProgressBar currentPage={3} />
       <div className="flex justify-center items-center bg-gray-100 p-4">
-        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-16 rounded-lg shadow-md w-[990px] h-[550px] border-2 border-red-800 ml-[350px]">
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-16 rounded-lg shadow-md w-[990px] h-[600px] border-2 border-red-800 ml-[350px]">
           <h2 className="text-4xl text-center font-bold mb-10 text-[#662113]">Last Seen Details</h2>
           <div className="mb-10 flex items-center">
             <label htmlFor="missing_date" className="w-40 text-[20px] font-extrabold text-black-700">Missing Date:</label>
