@@ -1,12 +1,10 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import Layout from '../../components/Layout';
 import { fetchMissingPersonById } from '../../../../utils/fetchMissingPerson';
 import { MissingPerson } from '@/app/utils/types';
 
 const MissingPersonPage = ({ params: { id } }: { params: { id: string } }) => { 
-  const router = useRouter();
   const [formData, setFormData] = useState<MissingPerson | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

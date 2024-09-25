@@ -1,5 +1,4 @@
 'use client';
-import Dashboard from "./(police)/police/missingInterface/page";
 import { useState,useEffect } from "react";
 import PoliceDashboard from "./PoliceDashboard";
 import MortuaryDashboard from "./MortuaryDashboard";

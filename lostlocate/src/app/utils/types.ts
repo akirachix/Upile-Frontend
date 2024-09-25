@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export interface MissingPerson {
   id: string;
   first_name: string;
@@ -24,7 +23,6 @@ export interface FetchMissingPersonsResponse {
   total_missing_persons: number
 
 }
-=======
 export interface PersonDetails {
     officer_id: number;
     first_name: string;
@@ -36,18 +34,7 @@ export interface LastSeenDetails {
     missing_date: string;
     location: string;}
 
-export interface MissingPerson {
 
-    first_name: string;
-    created_at:Date
-    last_name: string;
-    age: number;
-    gender: string;
-    location:string;
-    image: string;
-    clothes_worn: string;
-   
-  }
 
   export interface MissingPersonsData{
     missing_person: MissingPerson[];
@@ -123,4 +110,3 @@ export interface UnidentifiedBodiesData{
 
 
 
->>>>>>> dev

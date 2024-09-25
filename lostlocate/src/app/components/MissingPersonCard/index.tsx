@@ -19,6 +19,7 @@ const PersonCard: React.FC<MissingPerson> = ({
   last_name,
   age,
   gender,
+  image?: string;
   location,
   clothes_worn,
   missing_date,

@@ -18,7 +18,6 @@ const Dashboard: React.FC = () => {
   const { data, loading, error } = useMissingPersons();
   const [searchTerm, setSearchTerm] = useState('');
   const [persons, setPersons] = useState<MissingPerson[]>([]);
-  const [updateError, setUpdateError] = useState<string | null>(null);
 
   useEffect(() => {
     if (data && data.length > 0) {
@@ -34,20 +33,6 @@ const Dashboard: React.FC = () => {
   const handleAddData = () => {
     if (isMounted) {
       router.push('/missing_persons/first-page-form');
-    }
-  };
-
-  const handleUpdatePerson = (updatedPerson: MissingPerson) => {
-    try {
-      setPersons((prevPersons) =>
-        prevPersons.map((person) =>
-          person.id === updatedPerson.id ? updatedPerson : person
-        )
-      );
-      setUpdateError(null); 
-    } catch (error) {
-      console.error('Error updating person:', error);
-      setUpdateError('Failed to update the person');
     }
   };
 
@@ -94,11 +79,11 @@ const Dashboard: React.FC = () => {
                 {filteredPersons.map((person) => (
                   <PersonCard
                     key={person.id}
-                    id={person.id}
+                    id={Number(person.id)} 
                     first_name={person.first_name}
                     last_name={person.last_name}
                     age={person.age.toString()}
-                    image={person.image}
+                    image={person.image || '/path/to/default-image.jpg'}
                     gender={person.gender}
                     location={person.location}
                     clothes_worn={person.clothes_worn}
@@ -107,7 +92,6 @@ const Dashboard: React.FC = () => {
                 ))}
               </div>
             )}
-            {updateError && <p className="text-red-500 mt-4">{updateError}</p>}
           </section>
         </main>
       </div>

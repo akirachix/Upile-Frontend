@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-<<<<<<< HEAD
 import { fetchMissingPersonById } from '@/app/utils/fetchMissingPerson';  
 import { MissingPerson } from '@/app/utils/types';  
 
@@ -33,9 +32,7 @@ export const useSingleMissingPerson = (id: string) => {
 
 
 
-=======
 import { fetchData } from '@/app/utils/fetchData';
-import { MissingPerson} from '@/app/utils/types';
 
 export const useMissingPersons = () => {
   const [data, setData] = useState<MissingPerson[]>([]);
@@ -45,7 +42,7 @@ export const useMissingPersons = () => {
   useEffect(() => {
     const fetchMissingPersons = async () => {
       try {
-        const result = await fetchData('/api/missingpersons');
+        const result = await fetchData('api/missing_persons');
         
         setData(result?.missing_persons);
       } catch (err: unknown) {
@@ -64,4 +61,3 @@ export const useMissingPersons = () => {
 
   return { data, isLoading, error };
 };
->>>>>>> dev
