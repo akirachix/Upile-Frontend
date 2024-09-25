@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import { fetchMissingPersonById } from '@/app/utils/fetchMissingPerson';  
 import { MissingPerson } from '@/app/utils/types';  
 
@@ -32,3 +33,35 @@ export const useSingleMissingPerson = (id: string) => {
 
 
 
+=======
+import { fetchData } from '@/app/utils/fetchData';
+import { MissingPerson} from '@/app/utils/types';
+
+export const useMissingPersons = () => {
+  const [data, setData] = useState<MissingPerson[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    const fetchMissingPersons = async () => {
+      try {
+        const result = await fetchData('/api/missingpersons');
+        
+        setData(result?.missing_persons);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err);
+        } else {
+          setError(new Error("An unknown error occurred"));
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchMissingPersons();
+  }, []);
+
+  return { data, isLoading, error };
+};
+>>>>>>> dev
