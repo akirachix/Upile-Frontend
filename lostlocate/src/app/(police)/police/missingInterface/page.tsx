@@ -83,7 +83,6 @@ const Dashboard: React.FC = () => {
                     first_name={person.first_name}
                     last_name={person.last_name}
                     age={person.age.toString()}
-                    image={person.image || '/path/to/default-image.jpg'}
                     gender={person.gender}
                     location={person.location}
                     clothes_worn={person.clothes_worn}

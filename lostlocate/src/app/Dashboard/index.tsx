@@ -7,7 +7,7 @@ import PersonCard from '../PersonCard';
 import { useMissingPersons } from '../hooks/useMissingPersons';
 
 const PublicDasboard: React.FC = () => {
-  const { data, isLoading, error } = useMissingPersons();
+  const { data, loading, error } = useMissingPersons();
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredPersons = data.filter((person: { first_name: string; last_name: string; }) =>
@@ -63,7 +63,7 @@ const PublicDasboard: React.FC = () => {
               <FaSearch className="absolute left-3 md:left-14 top-1/2 transform -translate-y-1/2 text-[#662113]" />
             </div>
           </div>
-          {isLoading ? (
+          {loading ? (
             <p>Loading...</p>
           ) : error ? (
             <p> {error.message}</p>
@@ -81,8 +81,7 @@ const PublicDasboard: React.FC = () => {
                   image={person.image}
                   gender={person.gender}
                   location={person.location}
-                  clothes_worn={person.clothes_worn}
-                />
+                  clothes_worn={person.clothes_worn} id={''} contact={''} missing_date={''} height={0} weight={0} hair_color={''} eye_color={''} skin_color={''} officer_id={0}                />
               ))}
             </div>
           )}

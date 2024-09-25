@@ -42,7 +42,7 @@ export const useMissingPersons = () => {
   useEffect(() => {
     const fetchMissingPersons = async () => {
       try {
-        const result = await fetchData('api/missing_persons');
+        const result = await fetchData();
         
         setData(result?.missing_persons);
       } catch (err: unknown) {
