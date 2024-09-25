@@ -1,16 +1,17 @@
+const baseUrl = '/api/missing_persons/';
 
-export const fetchData = async (endpoint: string, options = {}) => {
+export const fetchData = async () => {
   try {
-    const response = await fetch(endpoint, options);
+    const url =  `${baseUrl}`
+    const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error(`Error: ${response.status} ${response.statusText}`);
+      throw new Error('Failed to fetch missing persons');
     }
 
     return await response.json();
   } catch (error) {
-    throw new Error('Failed to fetch data');
+    console.error('Error fetching missing persons:', (error as Error).message);
+    throw error;
   }
 };
-
-

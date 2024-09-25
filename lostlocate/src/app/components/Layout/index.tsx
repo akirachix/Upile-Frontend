@@ -1,11 +1,7 @@
-"use client";  
+"use client";
 import React from 'react';
-import SidebarNav from '../Sidebar';
-
-
-
+import SidebarNav from '../Sidebar'
 export default function Layout({ children }: { children: React.ReactNode }) {
- 
   return (
     <div className="flex min-h-screen">
       <div>

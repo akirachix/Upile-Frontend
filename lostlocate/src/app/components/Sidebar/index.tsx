@@ -18,7 +18,7 @@ const SidebarNav = () => {
   );
 
   return (
-    <div className="w-72 h-[100%] bg-[#662113] text-white p-4">
+    <div className=" fixed top-0 w-[350px] h-[100%] bg-[#662113] text-white p-4">
       <Image src='/media/lostlocatelogo.png' alt='LostLocate Logo' className='w-32 h-auto mx-auto sm:mx-0 mb-8' 
       width={500}
       height={300}/>
