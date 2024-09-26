@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { fetchTotalStations } from '../utils/fecthAdminData';
-import { fetchSuccessfulMatches } from '../utils/fecthAdminData';
-import { fetchTotalMortuaries } from '../utils/fecthAdminData';
+import { fetchTotalStations } from '../utils/fetchAdminData';
+import { fetchSuccessfulMatches } from '../utils/fetchAdminData';
+import { fetchTotalMortuaries } from '../utils/fetchAdminData';
 
 export const useGetAdminData = () => {
   const [metrics, setMetrics] = useState({

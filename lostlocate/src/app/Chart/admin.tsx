@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { ChartOptions } from 'chart.js';
 import { Chart as ChartJS, LinearScale, CategoryScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-import { fetchSuccessfulMatches } from '../utils/fecthAdminData';
+import { fetchSuccessfulMatches } from '../utils/fetchAdminData';
 
 ChartJS.register(
   LinearScale,

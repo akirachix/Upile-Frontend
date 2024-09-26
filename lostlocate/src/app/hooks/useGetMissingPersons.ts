@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { fetchMissingPersons } from '../utils/fetchMissingPersons';
-import { fetchSuccessfulMatches } from '../utils/fetchMissingPersons';
+import { fetchMissingPersons } from '../utils/fetchMissingPersonsByPolice';
+import { fetchSuccessfulMatches } from '../utils/fetchMissingPersonsByPolice';
 
 
 export const useGetMissingPersons = () => {

@@ -1,4 +1,4 @@
-import { NextOfKin } from '../utils/type';
+import { NextOfKin } from '../utils/types';
 import { useState } from 'react';
 import { postNextOfKin } from '../utils/postNextOfKin'
 

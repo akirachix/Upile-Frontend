@@ -1,4 +1,4 @@
-import { NextOfKin } from "./type";
+import { NextOfKin } from "./types";
 
 const url = '/api/nextofkin';
 

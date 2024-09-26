@@ -1,9 +1,11 @@
 'use client';
-import React, { useEffect, useState } from "react";
-import { getCookie } from 'cookies-next';
-import Dashboard from "./Dashboard";
+import { useState,useEffect } from "react";
 import PoliceDashboard from "./PoliceDashboard";
 import MortuaryDashboard from "./MortuaryDashboard";
+import {getCookie} from 'cookies-next';
+import PublicDasboard from "./Dashboard";
+
+
 
 export default function Home() {
   const [dashboard, setDashboard] = useState<JSX.Element | null>(null);
@@ -16,17 +18,15 @@ export default function Home() {
     } else if (userRole === 'mortuary') {
       setDashboard(<MortuaryDashboard />);
     } else {
-      setDashboard(<Dashboard />); 
+      setDashboard(<PublicDasboard />); 
     }
   }, []);
 
   return (
-    <div>   
+    <div>
+  {dashboard} 
 
-  {dashboard} <Dashboard/>
-
-  </div>
-
-  )
-
+    </div>
+     
+  );
 }
