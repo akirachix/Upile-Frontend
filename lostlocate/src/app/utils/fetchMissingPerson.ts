@@ -5,7 +5,7 @@ const baseUrl = '/api/missing_persons/';
 export const fetchMissingPersonById = async (id: string): Promise<MissingPerson> => {
     try {
         const response = await fetch(`${baseUrl}${id}`);
-        console.log({response});
+ 
         
         
         if (!response.ok) {
@@ -13,7 +13,7 @@ export const fetchMissingPersonById = async (id: string): Promise<MissingPerson>
         }
 
         const data = await response.json();
-        console.log({data});  
+      
         return data;
     } catch (error) {
         console.error('Error fetching missing person:', error);
