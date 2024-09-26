@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Line } from 'react-chartjs-2';
+import {Line} from 'react-chartjs-2';
 import { ChartOptions } from 'chart.js';
 import { Chart as ChartJS, LinearScale, CategoryScale, LineElement, PointElement, LineController, Title, Tooltip, Legend } from 'chart.js';
-import { fetchMissingPersons } from '@/app/utils/fetchMissingPersons';
+import { fetchMissingPersons } from '@/app/utils/fetchMissingPersonsByPolice';
 
 ChartJS.register(
   LinearScale,
