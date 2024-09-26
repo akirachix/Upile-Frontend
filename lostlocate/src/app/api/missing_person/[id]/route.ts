@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server';
+const baseUrl = process.env.BASE_URL
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -11,7 +12,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const response = await fetch(`https://lostlocate-1e4e80f4a89c.herokuapp.com/api/missing_persons/${id}`, {
+    const response = await fetch(`${baseUrl}/api/missing_persons/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -31,7 +32,6 @@ export async function GET(request: NextRequest) {
       statusText: 'Missing Person Fetched Successfully',
     });
   } catch (error) {
-    console.log('Error:', (error as Error).message);
 
     return new Response((error as Error).message, {
       status: 500,

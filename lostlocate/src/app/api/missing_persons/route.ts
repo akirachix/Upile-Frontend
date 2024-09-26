@@ -36,7 +36,6 @@ export async function GET() {
 const baseURL = process.env.BASE_URL;
 export async function POST(request: Request) {
     const requestData = await request.json();
-    console.log('Received data:', requestData);
    
     try {
         const response = await fetch(`${baseURL}/api/missing_persons/`, {
@@ -53,7 +52,6 @@ export async function POST(request: Request) {
     }
     catch (error) {
         const errors = (error as Error).message;
-        console.error({ errors });
         return new Response(errors, {
             status: 500,
         });

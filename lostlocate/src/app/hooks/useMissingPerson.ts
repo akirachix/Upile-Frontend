@@ -32,7 +32,7 @@ export const useSingleMissingPerson = (id: string) => {
 
 
 
-import { fetchData } from '@/app/utils/fetchData';
+import { fetchData } from '@/app/utils/fetchMissingPersonData';
 
 export const useMissingPersons = () => {
   const [data, setData] = useState<MissingPerson[]>([]);

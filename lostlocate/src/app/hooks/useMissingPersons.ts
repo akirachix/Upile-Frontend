@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { fetchData } from '../utils/fetchData';
+import { fetchData } from '../utils/fetchMissingPersonData';
 import { MissingPerson } from '@/app/utils/types';
 
 export const useMissingPersons = () => {
