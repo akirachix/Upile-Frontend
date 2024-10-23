@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MissingPerson } from '@/app/utils/types';
 import { FaPerson } from 'react-icons/fa6';
+import Image from 'next/image';
 
 const imageUrl = process.env.NEXT_PUBLIC_MEDIA_URL;
 
@@ -20,7 +21,7 @@ const PersonCard: React.FC<MissingPerson & { status: string }> = ({
   return (
     <div className="bg-white w-[100%] gap-4 p-2 md:p-8 lg:p-6 rounded-lg border border-[#662113] shadow-md flex flex-col md:flex-row">
       {!imageError && image ? (
-        <img
+        <Image
           src={`${imageUrl}${image}`}
           alt="person"
           className="w-[200px] h-[250px] object-cover" 

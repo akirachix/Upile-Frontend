@@ -136,7 +136,6 @@ const ChartComponent = () => {
   };
   const processYearlyData = (data: MissingPerson[]) => {
     const years: string[] = [];
-    const currentYear = new Date().getFullYear();
     const yearCounts: { [year: number]: number } = {};
     data.forEach((person) => {
       const date = new Date(person.missing_date);

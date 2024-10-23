@@ -1,9 +1,10 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { ChartOptions } from 'chart.js';
 import { Chart as ChartJS, LinearScale, CategoryScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { fetchUnidentifiedBodies } from '@/app/utils/fetchbodies';
+
 ChartJS.register(
   LinearScale,
   CategoryScale,
@@ -12,9 +13,11 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
 interface UnidentifiedBody {
   reporting_date: string;
 }
+
 interface ChartData {
   labels: string[];
   datasets: {
@@ -25,6 +28,7 @@ interface ChartData {
     borderWidth: number;
   }[];
 }
+
 const BarChartComponent = () => {
   const [chartData, setChartData] = useState<ChartData>({
     labels: [],
@@ -38,33 +42,12 @@ const BarChartComponent = () => {
       },
     ],
   });
+  
   const [isLoading, setIsLoading] = useState(true);
   const [hasData, setHasData] = useState(false);
   const [timeRange, setTimeRange] = useState('month'); 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetchUnidentifiedBodies();
-        const data = response.unidentified_bodies as UnidentifiedBody[];
-        if (data && data.length > 0) {
-          const processedData = processChartData(data, timeRange);
-          setChartData(processedData);
-          setHasData(true);
-        } else {
-          setChartData(getDefaultChartData());
-          setHasData(false);
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setChartData(getDefaultChartData());
-        setHasData(false);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, [timeRange]); 
-  const processChartData = (data: UnidentifiedBody[], range: string) => {
+
+  const processChartData = useCallback((data: UnidentifiedBody[], range: string) => {
     let labels: string[] = [];
     let dataPoints: number[] = [];
     if (range === 'week') {
@@ -113,7 +96,8 @@ const BarChartComponent = () => {
         },
       ],
     };
-  };
+  }, []);
+
   const getDaysOfCurrentWeek = () => {
     const today = new Date();
     const dayOfWeek = today.getDay(); 
@@ -123,6 +107,7 @@ const BarChartComponent = () => {
     startOfWeek.setDate(today.getDate() - dayOfWeek + 1); 
     return daysOfWeek.slice(1).concat('Sunday'); 
   };
+
   const getDefaultChartData = () => {
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     return {
@@ -138,6 +123,7 @@ const BarChartComponent = () => {
       ],
     };
   };
+
   const options: ChartOptions<'bar'> = {
     plugins: {
       legend: {
@@ -175,8 +161,34 @@ const BarChartComponent = () => {
       },
     },
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetchUnidentifiedBodies();
+        const data = response.unidentified_bodies as UnidentifiedBody[];
+        if (data && data.length > 0) {
+          const processedData = processChartData(data, timeRange);
+          setChartData(processedData);
+          setHasData(true);
+        } else {
+          setChartData(getDefaultChartData());
+          setHasData(false);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setChartData(getDefaultChartData());
+        setHasData(false);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
+  }, [timeRange, processChartData]); 
+
   if (isLoading) return <div>Loading chart...</div>;
   if (!hasData) return <div>Not found.</div>;
+
   return (
     <div>
       <div className="filter ml-[20px]">
@@ -198,4 +210,5 @@ const BarChartComponent = () => {
     </div>
   );
 };
+
 export default BarChartComponent;

@@ -6,6 +6,7 @@ import { FaSearch } from 'react-icons/fa';
 import UpdateCard from '../UpdateCard';
 import PersonCard from '../PersonCard';
 import { useMissingPersons } from '../hooks/useMissingPersons';
+import { MissingPerson } from '../utils/types';
 
 const PublicDashboard: React.FC = () => {
   const { data, loading, error } = useMissingPersons();
@@ -13,7 +14,7 @@ const PublicDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('Total Missing Persons');
   const [selectedLocation, setSelectedLocation] = useState<string>('All Locations');
 
-  const uniqueLocations = ['All Locations', ...Array.from(new Set(data?.map((person: any) => person.location)))];
+  const uniqueLocations = ['All Locations', ...Array.from(new Set(data?.map((person) => person.location)))];
 
   const filteredPersons = data?.filter((person: { first_name: string; last_name: string, location: string, created_at: string }) => {
     const matchesSearchTerm = person.first_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -24,7 +25,7 @@ const PublicDashboard: React.FC = () => {
     return matchesSearchTerm && matchesLocation;
   }).sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()) || [];
 
-  const assignStatus = (person: any) => {
+  const assignStatus = (person: MissingPerson) => {
     const currentDate = new Date();
     const missingDate = new Date(person.missing_date);
 
@@ -36,17 +37,17 @@ const PublicDashboard: React.FC = () => {
 
   const updateCategories = [
     { title: 'Total Statistics', count: data?.length || 0 },
-    { title: 'Missing', count: filteredPersons.filter((p: any) => assignStatus(p) === 'Missing').length },
+    { title: 'Missing', count: filteredPersons.filter((p) => assignStatus(p) === 'Missing').length },
     { title: 'Found', count: 0 },
-    { title: 'Departed', count: filteredPersons.filter((p: any) => assignStatus(p) === 'Departed').length },
+    { title: 'Departed', count: filteredPersons.filter((p) => assignStatus(p) === 'Departed').length },
   ];
 
   const filteredByTab = () => {
     switch (activeTab) {
       case 'Missing':
-        return filteredPersons.filter((p: any) => assignStatus(p) === 'Missing');
+        return filteredPersons.filter((p) => assignStatus(p) === 'Missing');
       case 'Departed':
-        return filteredPersons.filter((p: any) => assignStatus(p) === 'Departed');
+        return filteredPersons.filter((p) => assignStatus(p) === 'Departed');
       case 'Found':
         return [];
       default:
