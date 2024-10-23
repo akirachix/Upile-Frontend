@@ -32,10 +32,10 @@ const Notification: React.FC = () => {
 
   return (
     <Layout>
-    <div className="ml-[100px] min-h-screen bg-white py-8">
+    <div className="ml-[350px] min-h-screen bg-white py-8">
       <div className="container mx-auto">
         <h1 className="text-[40px] font-bold text-[#662113] mb-6 text-center">
-          Notifications
+          Match Notifications
         </h1>
         <div className="grid gap-4">
           {filteredNotifications.length > 0 ? (
@@ -48,7 +48,7 @@ const Notification: React.FC = () => {
               >
                 <div className="mr-4">
                   <Image
-                    src={`${imageUrl}${notification.missing_person.image}`}
+                    src={`${imageUrl}${notification.missing_person.image}`} 
                     alt="image"
                     width={100}
                     height={100}
@@ -61,7 +61,7 @@ const Notification: React.FC = () => {
                     {notification.missing_person.first_name}{" "}
                     {notification.missing_person.last_name} from{" "}
                     {notification.missing_person.location} may correspond to an
-                    unidentified body. Please review the details in LostLocate
+                    unidentified body. Please review the details
                     for further action.
                   </p>
                 </div>

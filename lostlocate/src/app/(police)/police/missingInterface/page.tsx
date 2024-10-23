@@ -32,7 +32,7 @@ const Dashboard: React.FC = () => {
 
   const handleAddData = () => {
     if (isMounted) {
-      router.push('/missing_persons/first-page-form');
+      router.push('/police/missing-persons/personal-details');
     }
   };
 

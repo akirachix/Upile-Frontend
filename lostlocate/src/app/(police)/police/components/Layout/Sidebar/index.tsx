@@ -1,16 +1,21 @@
 'use client';
-import React from 'react';
-import { useRouter } from 'next/navigation';
-import { FaHome, FaUpload, FaUsers, FaBell} from 'react-icons/fa';
+import React, { useState } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
+import { FaHome, FaUpload, FaUsers, FaBell, FaBars, FaTimes } from 'react-icons/fa';
 import Image from 'next/image';
 
 const SidebarNav = () => {
   const router = useRouter();
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   const SidebarItem = ({ Icon, label, path, isActive }: { Icon: React.ElementType, label: string, path: string, isActive: boolean }) => (
     <li
-      onClick={() => router.push(path)}
-      className={`flex items-center p-2 rounded-lg cursor-pointer ${isActive ? 'text-[#D4B337] ' : 'text-white  transition-colors duration-200'}`}
+      onClick={() => {
+        router.push(path);
+        setIsOpen(false); 
+      }}
+      className={`flex items-center p-2 rounded-lg cursor-pointer transition-colors duration-200 ${isActive ? 'text-[#D4B337]' : 'text-white'}`}
     >
       <Icon className="mr-2" />
       <span className="font-medium">{label}</span>
@@ -18,20 +23,34 @@ const SidebarNav = () => {
   );
 
   return (
-    <div className=" fixed top-0 w-[350px] h-[100%] bg-[#662113] text-white p-4">
-      <Image src='/media/lostlocatelogo.png' alt='LostLocate Logo' className='w-32 h-auto mx-auto sm:mx-0 mb-8' 
-      width={500}
-      height={300}/>
-      <nav className='nesthub:mt-10 nesthubmax:mt-20 2xl:mt-24'>
-        <ul className='space-y-11 text-[24px] nesthub:text-[18px] xl:text-[20px] 2xl:text-[24px] 2xl:mt-10'>
-          <SidebarItem Icon={FaHome} label="Home" path="/" isActive={false} />
-          <SidebarItem Icon={FaUpload} label="Update Data" path="police/missing-persons/personal-details" isActive={false} />
-          <SidebarItem Icon={FaUsers} label="Missing persons" path="police/missingInterface" isActive={false} />
-          <SidebarItem Icon={FaBell} label="Notifications" path="police/notifications" isActive={false} />
-        </ul>
-      </nav>
+    <div>
+      <div className="fixed top-0 left-0 z-50 mb-8 p-4 bg-[#662113] text-white w-full flex justify-between items-center md:hidden">
+        <h1 className="text-lg">Menu</h1>
+        <button onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <FaTimes /> : <FaBars />}
+        </button>
+      </div>
+      <div className={`fixed top-0 left-0 w-[300px] h-full bg-[#662113] text-white p-4 transition-transform transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:block`}>
+        <Image 
+          src='/media/lostlocatelogo.png' 
+          alt='LostLocate Logo' 
+          className='w-32 h-auto mx-auto mt-8 sm:mx-0 mb-8' 
+          width={500}
+          height={300}
+          priority
+        />
+        <nav className='mt-10'>
+          <ul className='space-y-6 text-[22px]'>
+            <SidebarItem Icon={FaHome} label="Home" path="/police" isActive={pathname === "/police"} />
+            <SidebarItem Icon={FaUpload} label="Add Data" path="/police/missing-persons/personal-details" isActive={pathname === "/police/missing-persons/personal-details"} />
+            <SidebarItem Icon={FaUsers} label="Missing persons" path="/police/missingInterface" isActive={pathname === "/police/missingInterface"} />
+            <SidebarItem Icon={FaBell} label="Notifications" path="/police/notifications" isActive={pathname === "/police/notifications"} />
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 };
 
 export default SidebarNav;
+
