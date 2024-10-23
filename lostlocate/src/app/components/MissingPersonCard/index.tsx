@@ -27,11 +27,9 @@ const PersonCard: React.FC<MissingPerson> = ({
   console.log({id});
   
   return (
-    <Link href={`/missing-person/${id}`} passHref>
+    <Link href={`/police/missing-person/${id}`} passHref>
       <div className="bg-white w-full max-w-2xl p-4 md:p-6 lg:p-8 rounded-lg border border-[#662113] shadow-md flex flex-col cursor-pointer">
-      <div className="text-sm md:text-base lg:text-lg mb-2">
-          <span className="font-bold text-[#662113]">Id:</span> {id}
-        </div>
+     
         <div className="text-sm md:text-base lg:text-lg mb-2">
           <span className="font-bold text-[#662113]">Name:</span> {first_name} {last_name}
         </div>
