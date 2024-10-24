@@ -19,6 +19,9 @@ const Dashboard: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [persons, setPersons] = useState<MissingPerson[]>([]);
 
+  const [currentPage, setCurrentPage] = useState(1); 
+  const itemsPerPage = 6; 
+
   useEffect(() => {
     if (data && data.length > 0) {
       setPersons(data);
@@ -30,9 +33,27 @@ const Dashboard: React.FC = () => {
     person.last_name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentPersons = filteredPersons.slice(indexOfFirstItem, indexOfLastItem); 
+
+  const totalPages = Math.ceil(filteredPersons.length / itemsPerPage);
+
   const handleAddData = () => {
     if (isMounted) {
       router.push('/police/missing-persons/personal-details');
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
     }
   };
 
@@ -75,21 +96,41 @@ const Dashboard: React.FC = () => {
             ) : filteredPersons.length === 0 ? (
               <p>No missing persons data available.</p>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
-                {filteredPersons.map((person) => (
-                  <PersonCard
-                    key={person.id}
-                    id={Number(person.id)} 
-                    first_name={person.first_name}
-                    last_name={person.last_name}
-                    age={person.age.toString()}
-                    gender={person.gender}
-                    location={person.location}
-                    clothes_worn={person.clothes_worn}
-                    missing_date={person.missing_date}
-                  />
-                ))}
-              </div>
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
+                  {currentPersons.map((person) => (
+                    <PersonCard
+                      key={person.id}
+                      id={Number(person.id)} 
+                      first_name={person.first_name}
+                      last_name={person.last_name}
+                      age={person.age.toString()}
+                      gender={person.gender}
+                      location={person.location}
+                      clothes_worn={person.clothes_worn}
+                      missing_date={person.missing_date}
+                    />
+                  ))}
+                </div>
+
+                <div className="flex justify-center items-center mt-8">
+                  <button
+                    onClick={handlePreviousPage}
+                    className={`px-4 py-2 mx-2 rounded-md ${currentPage === 1 ? 'bg-gray-300' : 'bg-[#D4B337] text-white hover:bg-yellow-600'} transition duration-300`}
+                    disabled={currentPage === 1}
+                  >
+                    Previous
+                  </button>
+                  <span className="text-lg mx-4">Page {currentPage} of {totalPages}</span>
+                  <button
+                    onClick={handleNextPage}
+                    className={`px-4 py-2 mx-2 rounded-md ${currentPage === totalPages ? 'bg-gray-300' : 'bg-[#D4B337] text-white hover:bg-yellow-600'} transition duration-300`}
+                    disabled={currentPage === totalPages}
+                  >
+                    Next
+                  </button>
+                </div>
+              </>
             )}
           </section>
         </main>
@@ -99,4 +140,3 @@ const Dashboard: React.FC = () => {
 };
 
 export default Dashboard;
-

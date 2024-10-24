@@ -42,7 +42,7 @@ const SidebarNav = () => {
         <nav className='mt-10'>
           <ul className='space-y-6 text-[22px]'>
             <SidebarItem Icon={FaHome} label="Home" path="/police" isActive={pathname === "/police"} />
-            <SidebarItem Icon={FaUpload} label="Add Data" path="/police/missing-persons/personal-details" isActive={pathname === "/police/missing-persons/personal-details"} />
+            <SidebarItem Icon={FaUpload} label="Add Missing Person" path="/police/missing-persons/personal-details" isActive={pathname === "/police/missing-persons/personal-details"} />
             <SidebarItem Icon={FaUsers} label="Missing persons" path="/police/missingInterface" isActive={pathname === "/police/missingInterface"} />
             <SidebarItem Icon={FaBell} label="Notifications" path="/police/notifications" isActive={pathname === "/police/notifications"} />
           </ul>
