@@ -68,9 +68,7 @@ const RegisterForm = () => {
   return (
     <div className="flex flex-col md:flex-row h-screen bg-white">
       <div className="w-full md:w-1/2 flex items-center justify-center p-8">
-
         <Image src='/media/lostlocate.png' alt="Logo" width={530} height={249} />
-
       </div>
       <div className="w-full md:w-1/2 bg-[rgba(212,179,55,0.4)] flex items-start justify-center p-8">
         <div className="max-w-md w-full mt-[-50px]">
@@ -84,10 +82,10 @@ const RegisterForm = () => {
                 type="text"
                 id="firstName"
                 {...register('first_name')}
-                placeholder="Jimin"
+                placeholder="Enter first name"
                 className={`mt-1 block w-full h-[55px] px-3 py-2 bg-white border ${errors.first_name ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-brown-500 focus:border-brown-500`}
               />
-              {errors.first_name && <p className="text-red-500 text-xs mt-1">{errors.first_name.message}</p>}
+              {errors.first_name && <p className="text-red-500 text-xs mt-1">{errors.first_name?.message}</p>}
             </div>
             <div className="mb-4">
               <label htmlFor="lastName" className="block text-[30px] font-semibold text-black capitalize mb-2">
@@ -97,10 +95,10 @@ const RegisterForm = () => {
                 type="text"
                 id="lastName"
                 {...register('last_name')}
-                placeholder="Mutava"
+                placeholder="Enter last name"
                 className={`mt-1 block w-full h-[55px] px-3 py-2 bg-white border ${errors.last_name ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-brown-500 focus:border-brown-500`}
               />
-              {errors.last_name && <p className="text-red-500 text-xs mt-1">{errors.last_name.message}</p>}
+              {errors.last_name && <p className="text-red-500 text-xs mt-1">{errors.last_name?.message}</p>}
             </div>
             <div className="mb-4">
               <label htmlFor="role" className="block text-[30px] font-semibold text-black capitalize mb-2">Role:</label>
@@ -113,7 +111,7 @@ const RegisterForm = () => {
                 <option value="Police">Police</option>
                 <option value="Mortuary Attendants">Mortuary Attendants</option>
               </select>
-              {errors.role && <p className="text-red-500 text-xs mt-1">{errors.role.message}</p>}
+              {errors.role && <p className="text-red-500 text-xs mt-1">{errors.role?.message}</p>}
             </div>
             <div className="mb-4">
               <label htmlFor="phone" className="block text-[30px] font-semibold text-black capitalize mb-2">
@@ -123,10 +121,10 @@ const RegisterForm = () => {
                 type="tel"
                 id="phone"
                 {...register('phone_number')}
-                placeholder="+254"
+                placeholder="07********"
                 className={`mt-1 block w-full h-[55px] px-3 py-2 bg-white border ${errors.phone_number ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-brown-500 focus:border-brown-500`}
               />
-              {errors.phone_number && <p className="text-red-500 text-xs mt-1">{errors.phone_number.message}</p>}
+              {errors.phone_number && <p className="text-red-500 text-xs mt-1">{errors.phone_number?.message}</p>}
             </div>
             <div className="mb-4">
               <label htmlFor="email" className="block text-[30px] font-semibold text-black capitalize mb-2">
@@ -136,10 +134,10 @@ const RegisterForm = () => {
                 type="email"
                 id="email"
                 {...register('email')}
-                placeholder="jmin@gmail.com"
+                placeholder="*********@gmail.com"
                 className={`mt-1 block w-full h-[55px] px-3 py-2 bg-white border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-brown-500 focus:border-brown-500`}
               />
-              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
+              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email?.message}</p>}
             </div>
             <div className="mb-4">
               <label htmlFor="username" className="block text-[30px] font-semibold text-black capitalize mb-2">
@@ -149,13 +147,11 @@ const RegisterForm = () => {
                 type="text"
                 id="username"
                 {...register('username')}
-                placeholder="jimin123"
+                placeholder="Enter username"
                 className={`mt-1 block w-full h-[55px] px-3 py-2 bg-white border ${errors.username ? 'border-red-500' : 'border-gray-300'} rounded-md shadow-sm focus:outline-none focus:ring-brown-500 focus:border-brown-500`}
               />
-              {errors.username && <p className="text-red-500 text-xs mt-1">{errors.username.message}</p>}
+              {errors.username && <p className="text-red-500 text-xs mt-1">{errors.username?.message}</p>}
             </div>
-            {apiError && <p className="text-red-500 text-xs mt-1">{apiError}</p>}
-            {successMessage && <p className="text-green-500 text-xs mt-1">{successMessage}</p>}
             <div className="flex justify-center">
               <button
                 type="submit"
@@ -167,6 +163,16 @@ const RegisterForm = () => {
           </form>
         </div>
       </div>
+      {successMessage && (
+        <div className="fixed top-0 left-0 right-0 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-md shadow-lg z-50 mt-4 mx-auto max-w-md">
+          <p className="text-center font-semibold">{successMessage}</p>
+        </div>
+      )}
+      {apiError && (
+        <div className="fixed top-0 left-0 right-0 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-md shadow-lg z-50 mt-4 mx-auto max-w-md">
+          <p className="text-center font-semibold">{apiError}</p>
+        </div>
+      )}
     </div>
   );
 };

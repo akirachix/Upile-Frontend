@@ -44,7 +44,7 @@ const AdminChart = () => {
     ],
   });
   const [isLoading, setIsLoading] = useState(true);
-  const [,setHasData] = useState(false);
+  const [, setHasData] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -153,8 +153,15 @@ const AdminChart = () => {
           font: {
             size: 14, 
           },
+          stepSize: 1, 
+          callback: function (value) {
+            if (Number.isInteger(value)) {
+              return value; 
+            }
+            return null;
+          },
         },
-        beginAtZero: true,
+        suggestedMin: 0, 
       },
     },
   };
@@ -169,5 +176,3 @@ const AdminChart = () => {
 };
 
 export default AdminChart;
-
-

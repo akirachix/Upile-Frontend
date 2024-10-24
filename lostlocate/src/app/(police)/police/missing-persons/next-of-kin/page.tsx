@@ -11,13 +11,13 @@ import ProgressBar from '@/app/components/Progressive bar';
 import { NextOfKin } from '@/app/utils/types';
 
 const schema = yup.object().shape({
-  missing_person_id: yup.number().required('Missing Person ID is required'),
-  first_name: yup.string().required('First Name is required'),
-  last_name: yup.string().required('Last Name is required'),
-  address: yup.string().required('Address is required'),
-  relationship: yup.string().required('Relationship is required'),
-  contact: yup.string().required('Contact number is required'),
-  alternative_contact: yup.string().required('Alternative contact is required'),
+  missing_person_id: yup.number().required(),
+  first_name: yup.string().required(),
+  last_name: yup.string().required(),
+  address: yup.string().required(),
+  relationship: yup.string().required(),
+  contact: yup.string().required(),
+  alternative_contact: yup.string().required(),
 });
 
 const NextOfKinForm = () => {
@@ -36,14 +36,15 @@ const NextOfKinForm = () => {
     setSuccessMessage(null);
 
     try {
-      console.log('Form submitted:', data); 
       const success = await submitNextOfKin(data); 
 
       if (success) {
         setSuccessMessage('Next of Kin details submitted successfully!');
+        setTimeout(() => {
+          router.push('police/missingInterface');
+        }, 2000);
       }
     } catch (error) {
-      console.error('Submission error:', error);
       setSubmitError(error instanceof Error ? error.message : 'An unknown error occurred');
     }
   };
@@ -52,101 +53,99 @@ const NextOfKinForm = () => {
     <Layout>
       <ProgressBar currentPage={3} />
       <div className="flex justify-center items-center bg-gray-100 p-4">
-        <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-16 ml-[350px] rounded-lg shadow-md w-[970px] h-[985px] border-2 border-red-800">
-          <h2 className="text-4xl text-center font-bold mb-10 text-[#662113]">Next of Kin Details</h2>
+        <form 
+          onSubmit={handleSubmit(onSubmit)} 
+          className="bg-white ml-[330px] p-8 rounded-lg shadow-lg w-full max-w-[800px] border-2 border-red-800"
+        >
+          <h2 className="text-3xl text-center font-bold mb-8 text-[#662113]">Next of Kin Details</h2>
 
-          <div className="mb-10 flex items-center">
-            <label htmlFor="missing_person_id" className="w-40 text-[20px] font-extrabold text-black-700">Missing Person ID:</label>
+          <div className="mb-6 flex items-center">
+            <label htmlFor="missing_person_id" className="w-1/3 text-lg font-semibold">Missing Person ID:</label>
             <input
               {...register('missing_person_id')}
-              type='number'
-              placeholder='Enter Missing Person ID'
-              className={`block ml-6 w-[615px] h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-lg ${errors.missing_person_id ? 'border-red-500' : 'border-gray-300'}`}
+              type="number"
+              placeholder="Enter Missing Person ID"
+              className={`block w-2/3 h-12 px-4 rounded-md bg-[#EEE0AF] border-2 ${errors.missing_person_id ? 'border-red-500' : 'border-[#D4B337]'}`}
             />
-            
-            {errors.missing_person_id && <p className="text-red-600">{errors.missing_person_id.message}</p>}
+            {errors.missing_person_id && <p className="text-red-600"></p>}
           </div>
 
-          <div className="mb-10 flex items-center">
-            <label htmlFor="first_name" className="w-40 text-[20px] font-extrabold text-black-700">First Name:</label>
+          <div className="mb-6 flex items-center">
+            <label htmlFor="first_name" className="w-1/3 text-lg font-semibold">First Name:</label>
             <input
               {...register('first_name')}
-              type='text'
-              placeholder='Enter First Name'
-              className={`block ml-6 w-[615px] h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-lg ${errors.first_name ? 'border-red-500' : 'border-gray-300'}`}
+              type="text"
+              placeholder="Enter First Name"
+              className={`block w-2/3 h-12 px-4 rounded-md bg-[#EEE0AF] border-2 ${errors.first_name ? 'border-red-500' : 'border-[#D4B337]'}`}
             />
-            {errors.first_name && <p className="text-red-600">{errors.first_name.message}</p>}
+            {errors.first_name && <p className="text-red-600"></p>}
           </div>
 
-          <div className="mb-10 flex items-center">
-            <label htmlFor="last_name" className="w-40 text-[20px] font-extrabold text-black-700">Last Name:</label>
+          <div className="mb-6 flex items-center">
+            <label htmlFor="last_name" className="w-1/3 text-lg font-semibold">Last Name:</label>
             <input
               {...register('last_name')}
-              type='text'
-              placeholder='Enter Last Name'
-              className={`block ml-6 w-[615px] h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-lg ${errors.last_name ? 'border-red-500' : 'border-gray-300'}`}
+              type="text"
+              placeholder="Enter Last Name"
+              className={`block w-2/3 h-12 px-4 rounded-md bg-[#EEE0AF] border-2 ${errors.last_name ? 'border-red-500' : 'border-[#D4B337]'}`}
             />
-            {errors.last_name && <p className="text-red-600">{errors.last_name.message}</p>}
+            {errors.last_name && <p className="text-red-600"></p>}
           </div>
 
-          <div className="mb-10 flex items-center">
-            <label htmlFor="address" className="w-40 text-[20px] font-extrabold text-black-700">Address:</label>
+          <div className="mb-6 flex items-center">
+            <label htmlFor="address" className="w-1/3 text-lg font-semibold">Address:</label>
             <input
               {...register('address')}
-              type='text'
-              placeholder='Enter Address'
-              className={`block ml-6 w-[615px] h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-lg ${errors.address ? 'border-red-500' : 'border-gray-300'}`}
+              type="text"
+              placeholder="Enter Address"
+              className={`block w-2/3 h-12 px-4 rounded-md bg-[#EEE0AF] border-2 ${errors.address ? 'border-red-500' : 'border-[#D4B337]'}`}
             />
-            {errors.address && <p className="text-red-600">{errors.address.message}</p>}
+            {errors.address && <p className="text-red-600"></p>}
           </div>
 
-          <div className="mb-10 flex items-center">
-            <label htmlFor="relationship" className="w-40 text-[20px] font-extrabold text-black-700">Relationship:</label>
+          <div className="mb-6 flex items-center">
+            <label htmlFor="relationship" className="w-1/3 text-lg font-semibold">Relationship:</label>
             <input
               {...register('relationship')}
-              type='text'
-              placeholder='Enter Relationship'
-              className={`block ml-6 w-[615px] h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-lg ${errors.relationship ? 'border-red-500' : 'border-gray-300'}`}
+              type="text"
+              placeholder="Enter Relationship"
+              className={`block w-2/3 h-12 px-4 rounded-md bg-[#EEE0AF] border-2 ${errors.relationship ? 'border-red-500' : 'border-[#D4B337]'}`}
             />
-            {errors.relationship && <p className="text-red-600">{errors.relationship.message}</p>}
+            {errors.relationship && <p className="text-red-600"></p>}
           </div>
 
-          <div className="mb-10 flex items-center">
-            <label htmlFor="contact" className="w-40 text-[20px] font-extrabold text-black-700">Contact:</label>
+          <div className="mb-6 flex items-center">
+            <label htmlFor="contact" className="w-1/3 text-lg font-semibold">Contact:</label>
             <input
               {...register('contact')}
-              type='text'
-              placeholder='Enter Contact Number'
-              className={`block ml-6 mr- w-[615px] h-[60px] px-4 py3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-lg ${errors.contact ? 'border-red500' : 'border-gray300'}`}
+              type="text"
+              placeholder="Enter Contact Number"
+              className={`block w-2/3 h-12 px-4 rounded-md bg-[#EEE0AF] border-2 ${errors.contact ? 'border-red-500' : 'border-[#D4B337]'}`}
             />
-            {errors.contact && <p className="text-red600">{errors.contact.message}</p>}
+            {errors.contact && <p className="text-red-600"></p>}
           </div>
 
-          <div className="mb10 flex items-center">
-            <label htmlFor="alternative_contact" className="w-40 text-[20px] font-extrabold text-black700 ">Alternative Contact:</label>
+          <div className="mb-6 flex items-center">
+            <label htmlFor="alternative_contact" className="w-1/3 text-lg font-semibold">Alternative Contact:</label>
             <input
               {...register('alternative_contact')}
-              type='text'
-              placeholder='Enter Alternative Contact'
-              className={`block ml-6 w-[615px] h-[60px] px-4 py3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-lg ${errors.alternative_contact ? 'border-red500' : 'border-gray300'}`}
+              type="text"
+              placeholder="Enter Alternative Contact"
+              className={`block w-2/3 h-12 px-4 rounded-md bg-[#EEE0AF] border-2 ${errors.alternative_contact ? 'border-red-500' : 'border-[#D4B337]'}`}
             />
-            {errors.alternative_contact && <p className="text-red600">{errors.alternative_contact.message}</p>}
+            {errors.alternative_contact && <p className="text-red-600"></p>}
           </div>
 
-          {submitError && <p className="text-red600">{submitError}</p>}
+          {submitError && <p className="text-red-600">{submitError}</p>}
           {successMessage && <p className="text-green-600">{successMessage}</p>}
 
-          <div className="flex justify-end">
-            
+          <div className="flex justify-end mt-6">
             <button
-                type="submit"
-                onClick={() => router.push('/police')}
-                className="bg-[#D4B337] mt-2 mr-1 text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-yellow-600"
-                disabled={isSubmitting}
-                
+              type="submit"
+              className="bg-[#D4B337] text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-yellow-600"
+              disabled={isSubmitting}
             >
-
-                {isSubmitting ? 'Submitting...' : 'Submit'}
+              {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>
           </div>
         </form>
@@ -156,3 +155,4 @@ const NextOfKinForm = () => {
 };
 
 export default NextOfKinForm;
+

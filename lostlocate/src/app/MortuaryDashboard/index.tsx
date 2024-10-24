@@ -18,7 +18,7 @@ const MortuaryDashboard = () => {
   const successfulMatches = metrics?.successfulMatches ?? 0;
 
   return (
-    <div className="h-screen w-screen fixed flex flex-col bg-gray-100">
+    <div className="h-screen w-screen fixed ml-[350px] flex flex-col bg-gray-100">
     
       <div className="flex gap-64 mt-10 ml-64
                       nesthub:mt-[8px] nesthub:ml-[35px] nesthub:gap-20 
@@ -26,12 +26,12 @@ const MortuaryDashboard = () => {
         <div className="bg-[#D4B337] text-white text-center text-[36px] font-bold p-8 rounded-lg shadow-lg w-[400px] h-[250px] 
                         nesthub:w-[250px] nesthub:h-[130px] nesthub:text-[20px] 
                         nesthubmax:w-[300px] nesthubmax:h-[180px] nesthubmax:text-[24px] 2xl:w-[400px] 2xl:h-[200px]">
-          Unidentified Bodies: {unidentifiedBodies}
+          Unidentified Bodies: <br/> {unidentifiedBodies}
         </div>
         <div className="bg-[#662113] text-white text-center text-[36px] font-bold p-8 rounded-lg shadow-lg w-[400px] h-[250px] 
                         nesthub:w-[250px] nesthub:h-[130px] nesthub:text-[20px] 
                         nesthubmax:w-[300px] nesthubmax:h-[180px] nesthubmax:text-[24px] 2xl:w-[400px] 2xl:h-[200px]">
-          Successful Matches: {successfulMatches}
+          Successful Matches: <br/> {successfulMatches}
         </div>
       </div>
 

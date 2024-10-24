@@ -20,22 +20,22 @@ const PoliceDashboard = () => {
   const closedCases = metrics?.closedCases ?? 0;
 
   return (
-    <div className="mt-12 ml-[350px]">
-      <div className="flex gap-16 mt-10 nesthub:mt-[8px] nesthub:ml-[18px] nesthubmax:mt-[12px] nesthub:gap-[24px] nesthubmax:ml-8 nesthubmax:gap-20 2xl:ml-14">
+    <div className="mt-6 ml-[330px] h-full">
+      <div className="flex gap-2 mt-10 nesthub:mt-[8px] nesthub:ml-[18px] nesthubmax:mt-[12px] nesthub:gap-[24px] nesthubmax:ml-8 nesthubmax:gap-20 2xl:ml-14">
         <div className="bg-[#D4B337] text-white text-center text-[24px] font-bold p-6 rounded-lg shadow-md w-[400px] h-[200px]
           nesthub:w-[190px] nesthub:h-[100px] nesthub:text-[16px]
-          nesthubmax:w-[230px] nesthubmax:h-[130px] nesthubmax:text-[20px] 2xl:w-[400px] 2xl:h-[200px] 2xl:text-[28px]">
-          Successful Matches: {successfulMatches}
+          nesthubmax:w-[230px] nesthubmax:h-[130px] nesthubmax:text-[20px] 2xl:w-[350px] 2xl:h-[150px] 2xl:text-[28px]">
+          Successful Matches:<br/> {successfulMatches}
         </div>
         <div className="bg-[#662113] text-white text-center text-[24px] font-bold p-6 rounded-lg shadow-md w-[400px]
           nesthub:w-[190px] nesthub:h-[100px] nesthub:text-[16px]
-          nesthubmax:w-[230px] nesthubmax:h-[130px] nesthubmax:text-[20px] 2xl:w-[400px] 2xl:h-[200px] 2xl:text-[28px]">
-          Open Cases: {openCases}
+          nesthubmax:w-[230px] nesthubmax:h-[130px] nesthubmax:text-[20px] 2xl:w-[350px] 2xl:h-[150px] 2xl:text-[28px]">
+          Open Cases:<br/> {openCases}
         </div>
-        <div className="bg-[#D4B337] text-white text-center text-[24px] font-bold p-6 rounded-lg shadow-md w-[400px]
+        <div className="bg-[#B2560D] text-white text-center text-[24px] font-bold p-6 rounded-lg shadow-md w-[400px]
           nesthub:w-[190px] nesthub:h-[100px] nesthub:text-[16px]
-          nesthubmax:w-[230px] nesthubmax:h-[130px] nesthubmax:text-[20px] 2xl:w-[400px] 2xl:h-[200px] 2xl:text-[28px]">
-          Closed Cases: {closedCases}
+          nesthubmax:w-[230px] nesthubmax:h-[130px] nesthubmax:text-[20px] 2xl:w-[350px] 2xl:h-[150px] 2xl:text-[28px]">
+          Closed Cases: <br/>{closedCases}
         </div>
       </div>
 

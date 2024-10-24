@@ -1,10 +1,10 @@
 // next.config.js
 /** @type {import('next').NextConfig} */
-const nextConfig = {
- 
+export const images = {
+    domains: ['lostlocate-1e4e80f4a89c.herokuapp.com'],
 };
-export default nextConfig;
- ;
+  
+  
 
 
 
