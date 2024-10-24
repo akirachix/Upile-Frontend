@@ -48,7 +48,7 @@ const Sidebar = () => {
         <nav>
           <ul className='space-y-6 text-[22px]'>
             <SidebarItem Icon={FaHome} label="Home" path="/mortuary" />
-            <SidebarItem Icon={FaUpload} label="Add Data" path="/mortuary/unidentified_bodies/first-page-form" />
+            <SidebarItem Icon={FaUpload} label="Add Body" path="/mortuary/unidentified_bodies/first-page-form" />
             <SidebarItem Icon={FaQuestionCircle} label="Unidentified bodies" path="/mortuary/unidentified-bodies-data" />
           </ul>
         </nav>

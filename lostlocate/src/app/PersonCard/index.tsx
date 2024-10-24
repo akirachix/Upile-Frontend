@@ -24,7 +24,9 @@ const PersonCard: React.FC<MissingPerson & { status: string }> = ({
         <Image
           src={`${imageUrl}${image}`}
           alt="person"
-          className="w-[200px] h-[250px] object-cover" 
+          width={350}
+          height={100}
+          className="w-[200px] h-[250px] object-cover"
           onError={() => setImageError(true)}
         />
       ) : (

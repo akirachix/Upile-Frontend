@@ -13,6 +13,10 @@ const PublicDashboard: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState<string>('Total Missing Persons');
   const [selectedLocation, setSelectedLocation] = useState<string>('All Locations');
+  
+
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const itemsPerPage = 6; 
 
   const uniqueLocations = ['All Locations', ...Array.from(new Set(data?.map((person) => person.location)))];
 
@@ -53,6 +57,20 @@ const PublicDashboard: React.FC = () => {
       default:
         return filteredPersons;
     }
+  };
+
+
+  const totalPages = Math.ceil(filteredByTab().length / itemsPerPage);
+
+  
+  const currentPersons = filteredByTab().slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -121,25 +139,57 @@ const PublicDashboard: React.FC = () => {
             <p>Loading...</p>
           ) : error ? (
             <p>{error.message}</p>
-          ) : filteredByTab().length === 0 ? (
+          ) : currentPersons.length === 0 ? (
             <p>Not Found.</p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {filteredByTab().map((person, index) => (
-                <PersonCard
-                  key={index}
-                  first_name={person.first_name}
-                  last_name={person.last_name}
-                  age={person.age}
-                  gender={person.gender}
-                  location={person.location}
-                  image={person.image}
-                  clothes_worn={person.clothes_worn}
-                  missing_date={person.missing_date}
-                  status={assignStatus(person)}
-                  id={''} contact={''} height={0} weight={0} hair_color={''} eye_color={''} skin_color={''} created_at={person.created_at} officer_id={0}                />
-              ))}
-            </div>
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {currentPersons.map((person, index) => (
+                  <PersonCard
+                    key={index}
+                    first_name={person.first_name}
+                    last_name={person.last_name}
+                    age={person.age}
+                    gender={person.gender}
+                    location={person.location}
+                    image={person.image}
+                    clothes_worn={person.clothes_worn}
+                    missing_date={person.missing_date}
+                    status={assignStatus(person)}
+                    id={''} contact={''} height={0} weight={0} hair_color={''} eye_color={''} skin_color={''} created_at={person.created_at} officer_id={0}
+                  />
+                ))}
+              </div>
+
+             
+              <div className="flex justify-center mt-8">
+                <button
+                  className="px-4 py-2 mx-1 border border-[#662113] text-[#662113] rounded-md disabled:opacity-50"
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                >
+                  Previous
+                </button>
+                {Array.from({ length: totalPages }, (_, index) => (
+                  <button
+                    key={index}
+                    className={`px-4 py-2 mx-1 border ${
+                      currentPage === index + 1 ? 'bg-[#662113] text-white' : 'border-[#662113] text-[#662113]'
+                    } rounded-md`}
+                    onClick={() => handlePageChange(index + 1)}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
+                <button
+                  className="px-4 py-2 mx-1 border border-[#662113] text-[#662113] rounded-md disabled:opacity-50"
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                </button>
+              </div>
+            </>
           )}
         </section>
       </main>
@@ -148,4 +198,3 @@ const PublicDashboard: React.FC = () => {
 };
 
 export default PublicDashboard;
-
