@@ -1,5 +1,6 @@
 import { MissingPersonData } from "./types";
 const url = '/api/missing_persons'
+
 export const postMissingPerson = async (details: MissingPersonData) => {
   try {
     const response = await fetch(url, {

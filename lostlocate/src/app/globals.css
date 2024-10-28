@@ -4,30 +4,6 @@
 @tailwind utilities;
 
 
-body{
-    font-family: 'Poppins', sans-serif;
-    
-}
-
-
-@keyframes moveText {
-    0% {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-  }
-  
-  .moving-text {
-    display: inline-block; /* Allows the text to animate */
-    animation: moveText 5s linear infinite; /* Adjust duration as needed */
-  }
   
 
 
