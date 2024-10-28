@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import UpdateCard from '../UpdateCard';
 import PersonCard from '../PersonCard';
 import { useMissingPersons } from '../hooks/useMissingPersons';
+import { MissingPerson } from '../utils/types';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -27,7 +28,7 @@ const PublicDashboard: React.FC = () => {
     return matchesSearchTerm && matchesLocation;
   }).sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()) || [];
 
-  const assignStatus = (person: any) => {
+  const assignStatus = (person: MissingPerson) => {
     const currentDate = new Date();
     const missingDate = new Date(person.missing_date);
     return currentDate.getTime() - missingDate.getTime() > 90 * 24 * 60 * 60 * 1000 ? 'Departed' : 'Missing';
@@ -35,17 +36,17 @@ const PublicDashboard: React.FC = () => {
 
   const updateCategories = [
     { title: 'Total Stats', count: filteredPersons.length },
-    { title: 'Missing', count: filteredPersons.filter((p: any) => assignStatus(p) === 'Missing').length },
+    { title: 'Missing', count: filteredPersons.filter((p) => assignStatus(p) === 'Missing').length },
     { title: 'Found', count: 0 },
-    { title: 'Departed', count: filteredPersons.filter((p: any) => assignStatus(p) === 'Departed').length },
+    { title: 'Departed', count: filteredPersons.filter((p) => assignStatus(p) === 'Departed').length },
   ];
 
   const filteredByTab = () => {
     switch (activeTab) {
       case 'Missing':
-        return filteredPersons.filter((p: any) => assignStatus(p) === 'Missing');
+        return filteredPersons.filter((p) => assignStatus(p) === 'Missing');
       case 'Departed':
-        return filteredPersons.filter((p: any) => assignStatus(p) === 'Departed');
+        return filteredPersons.filter((p) => assignStatus(p) === 'Departed');
       case 'Found':
         return [];
       default:
