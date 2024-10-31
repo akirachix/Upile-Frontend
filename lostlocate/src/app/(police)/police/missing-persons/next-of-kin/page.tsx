@@ -41,7 +41,7 @@ const NextOfKinForm = () => {
       if (success) {
         setSuccessMessage('Next of Kin details submitted successfully!');
         setTimeout(() => {
-          router.push('police/missingInterface');
+          router.push('/police/missingInterface');
         }, 2000);
       }
     } catch (error) {
