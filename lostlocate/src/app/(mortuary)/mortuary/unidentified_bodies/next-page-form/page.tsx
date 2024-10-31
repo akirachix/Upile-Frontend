@@ -183,7 +183,7 @@ const AddNewBodyDetailsForm = () => {
         setSuccessMessage('Body details submitted successfully!'); 
 
         setTimeout(() => {
-          router.push('mortuary/unidentified-bodies-data'); 
+          router.push('/mortuary/unidentified-bodies-data'); 
         }, 2000);
       }
 
