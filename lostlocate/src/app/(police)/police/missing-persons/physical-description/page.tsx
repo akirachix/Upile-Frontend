@@ -35,7 +35,7 @@ const AddNewBodyForm = () => {
       <ProgressBar currentPage={2} />
       <div className="flex justify-center items-center bg-gray-100 p-4">
         <form onSubmit={handleSubmit(onSubmit)} 
-          className="bg-white p-16 rounded-lg ml-[480px] shadow-md w-[95%] max-w-[950px] h-[auto] border-2 border-red-800 mx-auto"
+          className="bg-white p-16 rounded-lg ml-[570px] mt-6 shadow-md w-[95%] max-w-[950px] h-[auto] border-2 border-red-800 mx-auto"
         >
           <h2 className="text-4xl text-center font-bold mb-6 text-[#662113]">Physical Details</h2>
 
