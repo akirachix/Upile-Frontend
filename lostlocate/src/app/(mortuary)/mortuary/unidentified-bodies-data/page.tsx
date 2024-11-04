@@ -47,7 +47,6 @@ const UnidentifiedBodiesDashboard: React.FC = () => {
         <span className="text-2xl sm:text-4xl ml-2">?</span>
       </div>
       <div className="space-y-2">
-        <p><strong>ID:</strong> {body.id}</p>
         <p><strong>Name:</strong> {body.name || 'Unknown'}</p>
         <p><strong>Gender:</strong> {body.gender}</p>
         <p><strong>Reported Date:</strong> {formatDate(body.reporting_date)}</p>        
