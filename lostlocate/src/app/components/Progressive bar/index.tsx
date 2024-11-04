@@ -10,7 +10,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ currentPage }) => {
   const totalPages = 4;
 
   return (
-    <div className="flex items-center justify-center w-full max-w-md ml-auto mr-[420px]  ">
+    <div className="flex items-center justify-center w-full max-w-md ml-auto mr-[530px] mt-8  ">
       {[...Array(totalPages)].map((_, index) => (
         <React.Fragment key={index}>
           <div className={`w-4 h-4 rounded-full 

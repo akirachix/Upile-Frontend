@@ -60,7 +60,7 @@ const AddLastSeenDetailsForm = () => {
       <div className="flex justify-center items-center bg-gray-100 p-4">
         <form 
           onSubmit={handleSubmit(onSubmit)} 
-          className="bg-white p-8 ml-[320px] sm:p-10 md:p-12 lg:p-16 rounded-lg shadow-md w-full max-w-[90%] md:max-w-[80%] lg:max-w-[990px] border-2 border-red-800"
+          className="bg-white p-8 ml-[320px] mt-6 sm:p-10 md:p-12 lg:p-16 rounded-lg shadow-md w-full max-w-[90%] md:max-w-[80%] lg:max-w-[990px] border-2 border-red-800"
         >
           <h2 className="text-2xl sm:text-3xl lg:text-4xl text-center font-bold mb-6 lg:mb-10 text-[#662113]">Last Seen Details</h2>
           
@@ -70,7 +70,7 @@ const AddLastSeenDetailsForm = () => {
               {...register('missing_date')}
               type='date'
               placeholder='Enter missing date'
-              className={`block w-full md:w-[615px] h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-lg ${errors.missing_date ? 'border-red-500' : 'border-gray-300'}`}
+              className={`block w-full md:w-[615px] ml-14 h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-lg ${errors.missing_date ? 'border-red-500' : 'border-gray-300'}`}
             />
           </div>
           
@@ -78,7 +78,7 @@ const AddLastSeenDetailsForm = () => {
             <label htmlFor="location" className="w-full md:w-40 text-lg sm:text-xl font-extrabold text-black-700">Location:</label>
             <select
               {...register('location')}
-              className={`block w-full md:w-[615px] h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-lg ${errors.location ? 'border-red-500' : 'border-gray-300'}`}
+              className={`block w-full md:w-[615px] ml-14 h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-lg ${errors.location ? 'border-red-500' : 'border-gray-300'}`}
             >
               <option value="">Select location</option>
               {locations.map((loc) => (
@@ -92,17 +92,17 @@ const AddLastSeenDetailsForm = () => {
             <input
               {...register('clothes_worn')}
               placeholder='Enter clothes worn'
-              className={`block w-full md:w-[615px] h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-lg ${errors.clothes_worn ? 'border-red-500' : 'border-gray-300'}`}
+              className={`block w-full md:w-[615px] ml-14 h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-lg ${errors.clothes_worn ? 'border-red-500' : 'border-gray-300'}`}
             />
           </div>
 
           {submitError && <p className="text-red-600">{submitError}</p>}
           {successMessage && <p className="text-green-600">{successMessage}</p>}
 
-          <div className="flex justify-between mt-6">
+          <div className="flex justify-between mt-8">
             <button 
               type="button" 
-              onClick={() => router.push('/missing-persons/physical-description')} 
+              onClick={() => router.push('/police/missing-persons/physical-description')} 
               className="bg-[#D4B337] text-white px-4 sm:px-6 py-3 rounded-md text-lg font-semibold hover:bg-yellow-600"
             >
               Previous
