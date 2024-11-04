@@ -16,6 +16,7 @@ export interface MissingPerson {
   skin_color: string;
   created_at: string;
   officer_id: number; 
+  status: string
 }
 
 export interface FetchMissingPersonsResponse {
@@ -24,7 +25,6 @@ export interface FetchMissingPersonsResponse {
 
 }
 export interface PersonDetails {
-    officer_id: number;
     first_name: string;
     last_name: string;
     age: number;
@@ -45,8 +45,10 @@ export interface LastSeenDetails {
   export interface Matches{
     name_match:boolean;
     gender_match: boolean;
+    location: boolean;
+    date_reported:boolean;
     clothes_worn: boolean;
-    unidentified_body:[]
+    unidentified_body:UnidentifiedBodies
     missing_person: MissingPerson
   }
 
@@ -55,7 +57,6 @@ export interface LastSeenDetails {
   }
 
   export interface FirstPageForm{
-    staff_id: number,
     name: string,
     gender: string,
     location: string,
@@ -83,8 +84,9 @@ export interface UnidentifiedBodies{
     id:number;
     name:string;
     gender:string;
-    reporting_date:Date;
+    reporting_date:string;
     clothes_worn: string;
+    location: string
 }
 
 

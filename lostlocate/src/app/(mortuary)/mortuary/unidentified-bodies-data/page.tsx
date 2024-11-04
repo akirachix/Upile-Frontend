@@ -19,7 +19,7 @@ const UnidentifiedBodiesDashboard: React.FC = () => {
   };
 
   const filteredBodies: UnidentifiedBodies[] = (data || []).filter((body) =>
-    body.id && body.id.toString().includes(searchTerm)
+    body.reporting_date && body.reporting_date.toString().includes(searchTerm)
   );
 
   const bodiesToDisplay = searchTerm ? filteredBodies : data || [];
@@ -47,7 +47,6 @@ const UnidentifiedBodiesDashboard: React.FC = () => {
         <span className="text-2xl sm:text-4xl ml-2">?</span>
       </div>
       <div className="space-y-2">
-        <p><strong>ID:</strong> {body.id}</p>
         <p><strong>Name:</strong> {body.name || 'Unknown'}</p>
         <p><strong>Gender:</strong> {body.gender}</p>
         <p><strong>Reported Date:</strong> {formatDate(body.reporting_date)}</p>        
@@ -68,6 +67,8 @@ const UnidentifiedBodiesDashboard: React.FC = () => {
     }
   };
 
+  const today = new Date().toISOString().split('T')[0];
+
   return (
     <Layout>
       <div className="bg-white min-h-screen ml-0 sm:ml-[350px]">
@@ -79,16 +80,18 @@ const UnidentifiedBodiesDashboard: React.FC = () => {
         <main className="container mx-auto p-4">
           <section className="mt-4">
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-96 justify-between items-center mb-4">
-              <div className="relative w-full sm:w-96">
-                <input
-                  type="text"
-                  placeholder="Search by ID..."
-                  className="border border-[#662113] rounded-full px-4 py-2 w-full pl-10"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#662113]" />
-              </div>
+            <div className="relative w-full sm:w-96">
+              <input
+                type="date"  
+                placeholder="Search by Date..."
+                className="border border-[#662113] rounded-full px-4 py-2 w-full pl-10"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                max={today} 
+              />
+              <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#662113]" />
+            </div>
+
               <div className="mt-4 sm:mt-0 sm:mr-1 sm:ml-72">
                 <button onClick={handleAddData} className="bg-[#D4B337] text-white px-4 py-2 rounded-md hover:bg-yellow-600 transition duration-300">
                   + Add Data
@@ -107,6 +110,7 @@ const UnidentifiedBodiesDashboard: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {currentBodies.map((body) => (
                     <PersonCard key={body.id} body={body} />
+                    
                   ))}
                 </div>
 

@@ -199,7 +199,7 @@ const AddNewBodyDetailsForm = () => {
 
   return (
     <Layout>
-      <div className="flex justify-center items-center bg-gray-100 p-4">
+      <div className="flex justify-center items-center bg-gray-100 p-4 mt-10">
         <form onSubmit={handleSubmit(onSubmit)} className="bg-white ml-0 sm:ml-[330px] p-8 sm:p-16 rounded-lg shadow-md w-full sm:w-[930px] h-auto sm:h-[820px] border-2 border-red-800">
           <h2 className="text-2xl sm:text-4xl text-center font-bold mb-6 sm:mb-10 text-[#662113]">Add New Body Details</h2>
 
@@ -208,7 +208,7 @@ const AddNewBodyDetailsForm = () => {
             <input 
               {...register('hair_color')} 
               placeholder='Enter hair color'
-              className={`block w-full sm:w-[615px] h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-sm sm:text-lg ${errors.hair_color ? 'border-red-500' : 'border-gray-300'}`} 
+              className={`block w-full sm:w-[615px] ml-8 h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-sm sm:text-lg ${errors.hair_color ? 'border-red-500' : 'border-gray-300'}`} 
             />
           </div>
 
@@ -216,7 +216,7 @@ const AddNewBodyDetailsForm = () => {
             <label htmlFor="skin_color" className="w-full sm:w-40 text-[16px] sm:text-[20px] font-extrabold text-black-700 mb-2 sm:mb-0">Skin Color:</label>
             <select 
               {...register('skin_color')} 
-              className={`block w-full sm:w-[615px] h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-sm sm:text-lg ${errors.skin_color ? 'border-red-500' : 'border-gray-300'}`}
+              className={`block w-full sm:w-[615px] ml-8 h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-sm sm:text-lg ${errors.skin_color ? 'border-red-500' : 'border-gray-300'}`}
             >
               <option value="">Select skin color</option>
               <option value="light_skinned">light_skinned</option>
@@ -225,12 +225,12 @@ const AddNewBodyDetailsForm = () => {
           </div>
 
           <div className="mb-6 sm:mb-10 flex flex-col sm:flex-row items-start sm:items-center">
-            <label htmlFor="height" className="w-full sm:w-40 text-[16px] sm:text-[20px] font-extrabold text-black-700 mb-2 sm:mb-0">Height (cm):</label>
+            <label htmlFor="height" className="w-full sm:w-40 text-[16px] sm:text-[20px] font-extrabold text-black-700 mb-2 sm:mb-0">Height (m):</label>
             <input 
               {...register('height')} 
               type="number" 
               placeholder='Enter height'
-              className={`block w-full sm:w-[615px] h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-sm sm:text-lg ${errors.height ? 'border-red-500' : 'border-gray-300'}`} 
+              className={`block w-full sm:w-[615px] ml-8 h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-sm sm:text-lg ${errors.height ? 'border-red-500' : 'border-gray-300'}`} 
             />
           </div>
 
@@ -240,7 +240,7 @@ const AddNewBodyDetailsForm = () => {
               {...register('weight')} 
               type="number" 
               placeholder='Enter weight'
-              className={`block w-full sm:w-[615px] h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-sm sm:text-lg ${errors.weight ? 'border-red-500' : 'border-gray-300'}`} 
+              className={`block w-full sm:w-[615px] ml-8 h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-sm sm:text-lg ${errors.weight ? 'border-red-500' : 'border-gray-300'}`} 
             />
           </div>
 
@@ -249,7 +249,7 @@ const AddNewBodyDetailsForm = () => {
             <input 
               {...register('body_marks')} 
               placeholder='Enter body marks'
-              className="block w-full sm:w-[615px] h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-sm sm:text-lg" 
+              className="block w-full sm:w-[615px] ml-8 h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-sm sm:text-lg" 
             />
           </div>
 
@@ -258,7 +258,7 @@ const AddNewBodyDetailsForm = () => {
             <input 
               {...register('clothes_worn')} 
               placeholder='Enter clothes worn'
-              className="block w-full sm:w-[615px] h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-sm sm:text-lg" 
+              className="block w-full sm:w-[615px] ml-8 h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-sm sm:text-lg" 
             />
           </div>
 
