@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const imageUrl = process.env.NEXT_PUBLIC_MEDIA_URL;
 
-const PersonCard: React.FC<MissingPerson & { status: string }> = ({
+const PersonCard: React.FC<MissingPerson> = ({
   first_name,
   last_name,
   age,
@@ -56,12 +56,12 @@ const PersonCard: React.FC<MissingPerson & { status: string }> = ({
           <span className="font-bold text-[#662113]">Missing Date:</span> {missing_date}
         </div>
         <div className="text-sm md:text-base lg:text-[16px] mt-2">
-          <span className="font-bold text-[#662113]">Status:</span>
-          <span
+          <span className="font-bold text-[#662113]">Status:</span>{status}
+          {/* <span
             className={`ml-2 font-bold ${status === 'Missing' ? 'text-red-500' : status === 'Found' ? 'text-green-500' : 'text-gray-500'}`}
           >
             {status}
-          </span>
+          </span> */}
         </div>
       </div>
     </div>
