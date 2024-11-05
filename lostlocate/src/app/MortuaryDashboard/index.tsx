@@ -1,10 +1,11 @@
 'use client';
 import React from 'react';
-import { useGetUnidentifiedBodies } from '../hooks/useGetUnidentifiedBody'; 
+import { useDisplayUnidentifiedBodies } from '../hooks/useDisplayUnidentifiedBodies';
 import BarChartComponent from '../Chart/mortuary';
 
+
 const MortuaryDashboard = () => {
-  const { metrics, isLoading, error } = useGetUnidentifiedBodies(); 
+  const { data, isLoading, error } = useDisplayUnidentifiedBodies(); 
 
   if (isLoading) {
     return <p>Loading ...</p>;
@@ -13,9 +14,11 @@ const MortuaryDashboard = () => {
   if (error) {
     return <p>Error: {error.message}</p>;
   }
+
   
-  const unidentifiedBodies = metrics?.unidentifiedBodies ?? 0;
-  const successfulMatches = metrics?.successfulMatches ?? 0;
+  
+  const unidentifiedBodies = data.length;
+  const successfulMatches = 2
 
   return (
     <div className="h-screen w-screen fixed ml-[350px] flex flex-col bg-gray-100">

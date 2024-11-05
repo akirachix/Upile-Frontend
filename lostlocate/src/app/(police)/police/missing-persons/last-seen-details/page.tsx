@@ -35,14 +35,22 @@ const AddLastSeenDetailsForm = () => {
     setSubmitError(null);
     setSuccessMessage(null);
 
+
+
     const firstData = JSON.parse(localStorage.getItem('formData') || '{}');
     const secondFormData = JSON.parse(localStorage.getItem('secondFormData') || '{}');
     const combinedData = { ...firstData, ...secondFormData, ...data };
+
 
     try {
       const success = await submitMissingPerson(combinedData);
       if (success) {
         setSuccessMessage('Missing person details submitted successfully!');
+
+        setTimeout(() => {
+          router.push('/police/missingInterface'); 
+        }, 2000);
+
               }
     } catch (error: unknown) {
       console.error('Submission error:', error);
@@ -53,6 +61,9 @@ const AddLastSeenDetailsForm = () => {
       }
     }
   };
+
+  const today = new Date().toISOString().split('T')[0]; 
+
 
   return (
     <Layout>
@@ -70,6 +81,7 @@ const AddLastSeenDetailsForm = () => {
               {...register('missing_date')}
               type='date'
               placeholder='Enter missing date'
+              max={today} 
               className={`block w-full md:w-[615px] ml-14 h-[50px] sm:h-[60px] px-4 py-3 rounded-md bg-[#EEE0AF] border-[#D4B337] shadow-sm text-lg ${errors.missing_date ? 'border-red-500' : 'border-gray-300'}`}
             />
           </div>
@@ -112,7 +124,6 @@ const AddLastSeenDetailsForm = () => {
               type="submit"
               className="bg-[#662113] mr-[30px] text-white px-4 sm:px-6 py-3 rounded-md text-lg font-semibold hover:bg-red-900"
               disabled={isSubmitting}
-              onClick={() => router.push('/police/missing-persons/next-of-kin')}
             >
               {isSubmitting ? 'Submitting...' : 'Submit'}
             </button>

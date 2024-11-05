@@ -13,6 +13,7 @@ export const useCreateMissingPerson = () => {
       const result = await postMissingPerson(details);
       console.log('Submission successful:', result);
       return true;
+      
     } catch (err) {
       if (err instanceof Error) {
         setError(err);

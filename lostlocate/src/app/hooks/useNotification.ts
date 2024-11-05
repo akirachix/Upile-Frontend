@@ -1,31 +1,29 @@
 import { useEffect, useState } from 'react';
-import { fetchNotifications} from '@/app/utils/fetchNotification';
+import { fetchNotifications } from '@/app/utils/fetchNotification';
 import { Matches } from '@/app/utils/types';
 
 export const useNotifications = () => {
   const [data, setData] = useState<Matches[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     const getNotifications = async () => {
+      setLoading(true);
       try {
-        const result = await fetchNotifications('/api/matches');
-        setData(result);
-      } catch (err: unknown) {
-        if (err instanceof Error) {
-          setError(err);
-        } else {
-          setError(new Error("An unknown error occurred"));
-        }
+        const response = await fetchNotifications();  
+        console.log({ response });
+        setData(response);
+      } catch (err) {
+        setError(err as Error);
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     };
 
     getNotifications();
   }, []);
 
-  return { data, isLoading, error };
+  return { data, loading, error };
 };
 

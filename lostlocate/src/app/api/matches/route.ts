@@ -3,7 +3,7 @@ const baseURL = process.env.BASE_URL;
 
 export async function GET() {
     try{
-        const response = await fetch(`${baseURL}/api/matches`);
+        const response = await fetch(`${baseURL}/api/matches/`);
         const data = await response.json();
         
 
@@ -18,3 +18,5 @@ export async function GET() {
     }
     
 }
+
+
