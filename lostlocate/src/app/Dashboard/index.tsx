@@ -7,7 +7,6 @@ import { useRouter } from 'next/navigation';
 import UpdateCard from '../UpdateCard';
 import PersonCard from '../PersonCard';
 import { useMissingPersons } from '../hooks/useMissingPersons';
-import { MissingPerson } from '../utils/types';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -21,34 +20,28 @@ const PublicDashboard: React.FC = () => {
 
   const uniqueLocations = ['All Locations', ...Array.from(new Set(data?.map((person) => person.location)))];
 
-  const filteredPersons = data?.filter((person: { first_name: string; last_name: string; location: string; created_at: string }) => {
+  const filteredPersons = data?.filter((person) => {
     const matchesSearchTerm = person.first_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       person.last_name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesLocation = selectedLocation === 'All Locations' || person.location === selectedLocation;
     return matchesSearchTerm && matchesLocation;
   }).sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()) || [];
 
-  const assignStatus = (person: MissingPerson) => {
-    const currentDate = new Date();
-    const missingDate = new Date(person.missing_date);
-    return currentDate.getTime() - missingDate.getTime() > 90 * 24 * 60 * 60 * 1000 ? 'Departed' : 'Missing';
-  };
-
   const updateCategories = [
     { title: 'Total Stats', count: filteredPersons.length },
-    { title: 'Missing', count: filteredPersons.filter((p) => assignStatus(p) === 'Missing').length },
-    { title: 'Found', count: 0 },
-    { title: 'Departed', count: filteredPersons.filter((p) => assignStatus(p) === 'Departed').length },
+    { title: 'Missing', count: filteredPersons.filter((p) => p.status === 'missing').length },
+    { title: 'Found', count: filteredPersons.filter((p) => p.status === 'found').length },
+    { title: 'Departed', count: filteredPersons.filter((p) => p.status === 'departed').length },
   ];
 
   const filteredByTab = () => {
     switch (activeTab) {
       case 'Missing':
-        return filteredPersons.filter((p) => assignStatus(p) === 'Missing');
+        return filteredPersons.filter((p) => p.status === 'missing');
       case 'Departed':
-        return filteredPersons.filter((p) => assignStatus(p) === 'Departed');
+        return filteredPersons.filter((p) => p.status === 'departed');
       case 'Found':
-        return [];
+        return filteredPersons.filter((p) => p.status === 'found');
       default:
         return filteredPersons;
     }
@@ -62,30 +55,29 @@ const PublicDashboard: React.FC = () => {
 
   return (
     <div className="bg-white min-h-screen">
-<header className="bg-[#662113] text-white p-4">
-  <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-    <Image
-      src='/media/lostlocatelogo.png'
-      alt='LostLocate Logo'
-      className='w-24 ml-[-76px] sm:w-32'
-      width={500}
-      height={300}
-      priority
-    />
-    
-    <h1 className="text-[#D4B337] text-center text-[24px] sm:text-[40px] flex-grow">
-      Locating Lost Ones
-    </h1>
-    
-    <button
-      onClick={() => router.push('/login')}
-      className="mt-4 mr-[-70px] sm:mt-0 bg-[#D4B337] hover:bg-[#bba72f] text-[#662113] font-semibold py-2 px-6 rounded-full shadow-lg transition duration-200 ease-in-out transform hover:scale-105"
-    >
-      Manage Data
-    </button>
-  </div>
-</header>
-
+      <header className="bg-[#662113] text-white p-4">
+        <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+          <Image
+            src='/media/lostlocatelogo.png'
+            alt='LostLocate Logo'
+            className='w-24 ml-[-76px] sm:w-32'
+            width={500}
+            height={300}
+            priority
+          />
+          
+          <h1 className="text-[#D4B337] text-center text-[24px] sm:text-[40px] flex-grow">
+            Locating Lost Ones
+          </h1>
+          
+          <button
+            onClick={() => router.push('/login')}
+            className="mt-4 mr-[-70px] sm:mt-0 bg-[#D4B337] hover:bg-[#bba72f] text-[#662113] font-semibold py-2 px-6 rounded-full shadow-lg transition duration-200 ease-in-out transform hover:scale-105"
+          >
+            Manage Data
+          </button>
+        </div>
+      </header>
 
       <main className="container mx-auto p-4">
         <section className="flex justify-between items-center mt-8 mb-4">
@@ -155,8 +147,9 @@ const PublicDashboard: React.FC = () => {
                   image={person.image}
                   clothes_worn={person.clothes_worn}
                   missing_date={person.missing_date}
-                  status={assignStatus(person)}
-                  id={''} contact={''} height={0} weight={0} hair_color={''} eye_color={''} skin_color={''} created_at={person.created_at} officer_id={0}                />
+                  status= { person.status}
+                  id={''} contact={''} height={0} weight={0} hair_color={''} eye_color={''} skin_color={''} created_at={person.created_at} officer_id={0}
+                />
               ))}
             </div>
           )}
@@ -187,5 +180,3 @@ const PublicDashboard: React.FC = () => {
 };
 
 export default PublicDashboard;
-
-

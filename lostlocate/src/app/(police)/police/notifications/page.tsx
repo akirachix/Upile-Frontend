@@ -9,7 +9,7 @@ import { Matches } from "@/app/utils/types";
 const imageUrl = process.env.NEXT_PUBLIC_MEDIA_URL;
 
 const Notification: React.FC = () => {
-  const { data: notifications, isLoading, error } = useNotifications();
+  const { data: notifications, loading, error } = useNotifications();
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedNotification, setSelectedNotification] = useState<Matches | null>(null);
 
@@ -23,7 +23,7 @@ const Notification: React.FC = () => {
     setModalOpen(false);
   };
 
-  if (isLoading) {
+  if (loading) {
     return <div className="text-center py-4">Loading...</div>;
   }
 
@@ -45,8 +45,7 @@ const Notification: React.FC = () => {
       (a, b) =>
         new Date(b.missing_person.created_at).getTime() -
         new Date(a.missing_person.created_at).getTime()
-    )
-    .slice(0, 3);
+    );
 
   return (
     <Layout>
@@ -69,9 +68,9 @@ const Notification: React.FC = () => {
                     <Image
                       src={`${imageUrl}${notification.missing_person.image}`}
                       alt="image"
-                      width={100}
-                      height={100}
-                      className="rounded-full"
+                      width={230}
+                      height={50}
+                      className="h-[150px] rounded object-cover"
                     />
                   </div>
                   <div className="flex-grow">
