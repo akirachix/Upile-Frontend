@@ -1,4 +1,3 @@
-
 "use client";
 import { useState } from "react";
 import { useNotifications } from "@/app/hooks/useNotification";
@@ -9,7 +8,7 @@ import { Matches } from "@/app/utils/types";
 const imageUrl = process.env.NEXT_PUBLIC_MEDIA_URL;
 
 const Notification: React.FC = () => {
-  const { data: notifications, isLoading, error } = useNotifications();
+  const { data: notifications, loading, error } = useNotifications();
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedNotification, setSelectedNotification] = useState<Matches | null>(null);
 
@@ -23,7 +22,7 @@ const Notification: React.FC = () => {
     setModalOpen(false);
   };
 
-  if (isLoading) {
+  if (loading) {
     return <div className="text-center py-4">Loading...</div>;
   }
 
@@ -45,8 +44,7 @@ const Notification: React.FC = () => {
       (a, b) =>
         new Date(b.missing_person.created_at).getTime() -
         new Date(a.missing_person.created_at).getTime()
-    )
-    .slice(0, 3);
+    );
 
   return (
     <Layout>
@@ -69,21 +67,23 @@ const Notification: React.FC = () => {
                     <Image
                       src={`${imageUrl}${notification.missing_person.image}`}
                       alt="image"
-                      width={100}
-                      height={100}
-                      className="rounded-full"
+                      width={230}
+                      height={50}
+                      className="h-[150px] rounded object-cover"
                     />
                   </div>
                   <div className="flex-grow">
                     <p className="text-gray-800">
-                    A potential match has been identified:{" "}
-                    {notification.missing_person.first_name}{" "} 
-                    {notification.missing_person.last_name} recorded as a {notification.missing_person.gender} from{" "} 
-                    {notification.missing_person.location} who went missing on {notification.missing_person.missing_date} {" "} 
-                    wearing a 
-                    {notification.missing_person.clothes_worn}, may correspond to an unidentified body recorded as a {notification.unidentified_body.gender} found at {" "} 
-                    {notification.unidentified_body.location}, which was reported on {notification.unidentified_body.reporting_date} {" "} 
-                    wearing {notification.unidentified_body.clothes_worn}. Please review the details for further action.
+                      A potential match has been identified:{" "}
+                      {notification.missing_person.first_name}{" "} 
+                      {notification.missing_person.last_name} recorded as a {notification.missing_person.gender} from{" "} 
+                      {notification.missing_person.location} who went missing on {notification.missing_person.missing_date} {" "} 
+                      wearing {notification.missing_person.clothes_worn}, may correspond to an unidentified body recorded as a {notification.unidentified_body.gender} found at {" "} 
+                      {notification.unidentified_body.location}, which was reported on {notification.unidentified_body.reporting_date} {" "} 
+                      wearing {notification.unidentified_body.clothes_worn}. Please review the details for further action.
+                    </p>
+                    <p className="text-[#662113] mt-[24px] ml-[80%] text-sm">
+                      Notification created at: {new Date(notification.missing_person.created_at).toLocaleString()}
                     </p>
                   </div>
                 </div>
@@ -102,8 +102,7 @@ const Notification: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg max-w-md w-full">
             <h2 className="text-[24px] text-[#662113] font-bold">Notification Details</h2>
-            <br></br>
-
+            <br />
             <h2 className="text-[20px] text-[#662113] font-bold">Missing Person</h2>
             <p>
               Missing Person: {selectedNotification.missing_person.first_name}{" "}
@@ -113,19 +112,17 @@ const Notification: React.FC = () => {
             <p>Location: {selectedNotification.missing_person.location}</p>
             <p>Date Missing: {selectedNotification.missing_person.missing_date}</p>
             <p>Clothes Worn: {selectedNotification.missing_person.clothes_worn}</p>
+            <br />
+            <h2 className="text-[20px] text-[#662113] font-bold">Unidentified Body</h2>
             <p>
-              <br></br>
-              <h2 className="text-[20px] text-[#662113] font-bold">Unidentied Body</h2>
               Unidentified Body Found at:{" "}
               {selectedNotification.unidentified_body.location}
             </p>
             <p>
-              Name:{" "}
-              {selectedNotification.unidentified_body.name}
+              Name: {selectedNotification.unidentified_body.name}
             </p>
             <p>
-              Gender:{" "}
-              {selectedNotification.unidentified_body.gender}
+              Gender: {selectedNotification.unidentified_body.gender}
             </p>
             <p>
               Date Reported: {selectedNotification.unidentified_body.reporting_date}
@@ -145,4 +142,3 @@ const Notification: React.FC = () => {
 };
 
 export default Notification;
-

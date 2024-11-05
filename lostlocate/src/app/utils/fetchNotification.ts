@@ -1,13 +1,20 @@
-export const fetchNotifications = async (endpoint: string, options = {}) => {
+const baseUrl = '/api/matches';
+
+export const fetchNotifications = async () => {
   try {
-    const response = await fetch(endpoint, options);
+    const url =  `${baseUrl}`
+    const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error(`Error: ${response.status} ${response.statusText}`);
+      throw new Error('Failed to fetch matches');
     }
 
     return await response.json();
   } catch (error) {
-    throw new Error('Failed to fetch data');
+    console.error('Error fetching matches:', (error as Error).message);
+    throw error;
   }
 };
+
+
+
