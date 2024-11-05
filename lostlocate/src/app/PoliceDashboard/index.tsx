@@ -1,12 +1,13 @@
 'use client';
 import React from 'react';
-import { useGetMissingPersons } from '../hooks/useGetMissingPersons';
 import ChartComponent from '../Chart/policeChart';
+import { useMissingPersons } from '../hooks/useMissingPersons';
+
 
 const PoliceDashboard = () => {
-  const { metrics, isLoading, error } = useGetMissingPersons();
+  const { data, loading, error } = useMissingPersons();
 
-  if (isLoading) {
+  if (loading) {
     return <p>Loading ...</p>;
   }
 
@@ -15,9 +16,9 @@ const PoliceDashboard = () => {
   }
 
   
-  const successfulMatches = metrics?.successfulMatches ?? 0;
-  const openCases = metrics?.openCases ?? 0;
-  const closedCases = metrics?.closedCases ?? 0;
+  const successfulMatches = data.filter(person => person.status === 'found').length;
+  const openCases = data.filter(person=> person.status === 'missing').length;
+  const closedCases = data.filter(person=> person.status === 'departed').length;
 
   return (
     <div className="mt-6 ml-[330px] h-full">
