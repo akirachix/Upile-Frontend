@@ -11,10 +11,19 @@ const Notification: React.FC = () => {
   const { data: notifications, loading, error } = useNotifications();
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedNotification, setSelectedNotification] = useState<Matches | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3;
+
+  const [readStatus, setReadStatus] = useState<{ [key: string]: boolean }>({});
 
   const openModal = (notification: Matches) => {
     setSelectedNotification(notification);
     setModalOpen(true);
+
+    setReadStatus((prevStatus) => ({
+      ...prevStatus,
+      [notification.missing_person.created_at]: true,
+    }));
   };
 
   const closeModal = () => {
@@ -46,6 +55,16 @@ const Notification: React.FC = () => {
         new Date(a.missing_person.created_at).getTime()
     );
 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentNotifications = filteredNotifications.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(filteredNotifications.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <Layout>
       <div className="ml-[350px] min-h-screen bg-white py-8">
@@ -54,13 +73,15 @@ const Notification: React.FC = () => {
             Match Notifications
           </h1>
           <div className="grid gap-4">
-            {filteredNotifications.length > 0 ? (
-              filteredNotifications.map((notification, index) => (
+            {currentNotifications.length > 0 ? (
+              currentNotifications.map((notification, index) => (
                 <div
                   key={index}
                   onClick={() => openModal(notification)}
-                  className={`cursor-pointer flex items-center p-4 border border-gray-300 rounded-lg bg-white ${
-                    index === 0 ? "bg-[#f9f9f9]" : ""
+                  className={`cursor-pointer flex items-center p-4 border border-gray-300 rounded-lg ${
+                    readStatus[notification.missing_person.created_at]
+                      ? "bg-gray-200"
+                      : "bg-[#f9f9f9] font-bold"
                   }`}
                 >
                   <div className="mr-4">
@@ -94,10 +115,25 @@ const Notification: React.FC = () => {
               </div>
             )}
           </div>
+
+          {totalPages > 1 && (
+            <div className="flex justify-center mt-4">
+              {Array.from({ length: totalPages }, (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => handlePageChange(i + 1)}
+                  className={`px-3 py-1 mx-1 rounded-lg ${
+                    currentPage === i + 1 ? "bg-[#662113] text-white" : "bg-gray-200 text-gray-700"
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Modal */}
       {isModalOpen && selectedNotification && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg max-w-md w-full">
