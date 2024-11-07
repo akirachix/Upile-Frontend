@@ -81,6 +81,7 @@ export interface BodyDetailsData{
 }
 
 export interface UnidentifiedBodies{
+    id:number,
     name:string;
     gender:string;
     reporting_date:string;
