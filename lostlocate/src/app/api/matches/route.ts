@@ -3,7 +3,9 @@ const baseURL = process.env.BASE_URL;
 
 export async function GET() {
     try{
-        const response = await fetch(`${baseURL}/api/matches/`);
+        const response = await fetch(`${baseURL}/api/matches/`,{
+            next: {revalidate:3},
+        });
         const data = await response.json();
         
 

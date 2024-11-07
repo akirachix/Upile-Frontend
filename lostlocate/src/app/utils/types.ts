@@ -60,7 +60,7 @@ export interface LastSeenDetails {
     name: string,
     gender: string,
     location: string,
-    reporting_date: Date,
+    reporting_date: string,
 
   }
 
@@ -81,13 +81,15 @@ export interface BodyDetailsData{
 }
 
 export interface UnidentifiedBodies{
-    id:number;
+    id:number,
     name:string;
     gender:string;
     reporting_date:string;
     clothes_worn: string;
     location: string
 }
+
+
 
 
 export interface PhysicalDescription {

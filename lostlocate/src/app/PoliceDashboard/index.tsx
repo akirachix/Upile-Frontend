@@ -18,7 +18,7 @@ const PoliceDashboard = () => {
   
   const successfulMatches = data.filter(person => person.status === 'found').length;
   const openCases = data.filter(person=> person.status === 'missing').length;
-  const closedCases = data.filter(person=> person.status === 'departed').length;
+  const closedCases = data.filter(person=> person.status === 'departed').length + data.filter(person => person.status === 'found').length;
 
   return (
     <div className="mt-6 ml-[330px] h-full">
