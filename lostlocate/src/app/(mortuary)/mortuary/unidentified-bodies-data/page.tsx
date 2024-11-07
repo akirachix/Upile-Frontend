@@ -18,12 +18,16 @@ const UnidentifiedBodiesDashboard: React.FC = () => {
     router.push('/mortuary/unidentified_bodies/first-page-form'); 
   };
 
-  const filteredBodies: UnidentifiedBodies[] = (data || []).filter((body) =>
+  const sortedData = [...(data || [])].sort((a, b) => 
+    new Date(b.reporting_date).getTime() - new Date(a.reporting_date).getTime()
+  );
+
+  const filteredBodies: UnidentifiedBodies[] = sortedData.filter((body) =>
     body.reporting_date && body.reporting_date.toString().includes(searchTerm)
   );
 
-  const bodiesToDisplay = searchTerm ? filteredBodies : data || [];
-  const sortedBodies = [...bodiesToDisplay].sort((a, b) => b.id - a.id);
+  const bodiesToDisplay = searchTerm ? filteredBodies : sortedData || [];
+  const sortedBodies = [...bodiesToDisplay];
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;

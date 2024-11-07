@@ -12,7 +12,7 @@ const schema = yup.object().shape({
   name: yup.string().required('Name is required'),
   gender: yup.string().required('Gender is required'),
   location: yup.string().required('Location is required'),
-  reporting_date: yup.date().max(new Date()).required('Reporting date is required'), 
+  reporting_date: yup.string().matches(/^\d{4}-\d{2}-\d{2}$/, 'Date must be in the format yyyy-mm-dd').required('Reporting date is required'), 
 });
 
 const AddNewBodyForm = () => {
