@@ -104,7 +104,7 @@ const Notification: React.FC = () => {
                       wearing {notification.unidentified_body.clothes_worn}. Please review the details for further action.
                     </p>
                     <p className="text-[#662113] mt-[24px] ml-[80%] text-sm">
-                      Notification created at: {new Date(notification.missing_person.created_at).toLocaleString()}
+                      Notification created at: {new Date(notification.unidentified_body.created_at).toLocaleString()}
                     </p>
                   </div>
                 </div>
