@@ -86,7 +86,8 @@ export interface UnidentifiedBodies{
     gender:string;
     reporting_date:string;
     clothes_worn: string;
-    location: string
+    location: string;
+    created_at: string
 }
 
 
